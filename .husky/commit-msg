@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Commit-msg Hook with Constitutional Compliance
+# This hook validates commit messages against constitutional standards
+
+commit_regex='^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,50}'
+
+commit_msg_file="$1"
+commit_msg=$(cat "$commit_msg_file")
+
+echo "📝 Validating commit message against constitutional standards..."
+
+# Check if commit message follows conventional format
+if [[ ! $commit_msg =~ $commit_regex ]]; then
+    echo "❌ Commit message does not follow constitutional standards"
+    echo ""
+    echo "Required format: <type>(<scope>): <description>"
+    echo "Types: feat, fix, docs, style, refactor, test, chore"
+    echo "Example: feat(auth): add user authentication system"
+    echo ""
+    echo "Current message: $commit_msg"
+    exit 1
+fi
+
+# Check for constitutional compliance keywords
+constitutional_keywords=("constitutional" "compliance" "audit" "validation" "security" "performance")
+has_constitutional=false
+
+for keyword in "${constitutional_keywords[@]}"; do
+    if [[ $commit_msg =~ $keyword ]]; then
+        has_constitutional=true
+        break
+    fi
+done
+
+# Log constitutional compliance
+echo "📝 Logging commit message validation..."
+mkdir -p .constitutional
+echo "$(date): Commit message validation passed for: $commit_msg" >> .constitutional/audit.log
+
+echo "✅ Commit message validation passed"
+exit 0

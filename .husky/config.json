@@ -1,0 +1,9 @@
+module.exports = {
+  "hooks": {
+    "pre-commit": ".husky/pre-commit",
+    "commit-msg": ".husky/commit-msg", 
+    "pre-push": ".husky/pre-push",
+    "post-commit": ".husky/post-commit",
+    "post-merge": ".husky/post-merge"
+  }
+};

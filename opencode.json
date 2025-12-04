@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "snapshot": true,
+  "tools": {
+    "glob": false
+  },
+  "mcp": {
+    "memory": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "environment": {
+        "MEMORY_FILE_PATH": "/Users/lorenzo/.config/opencode/memory.jsonl"
+      },
+      "enabled": true,
+      "timeout": 5000
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/lorenzo/projects",
+        "/Users/lorenzo/Documents",
+        "/Users/lorenzo/Downloads",
+        "/Users/lorenzo/Desktop"
+      ],
+      "enabled": true,
+      "timeout": 5000
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "enabled": true,
+      "timeout": 10000
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "bunx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "environment": {
+        "CONTEXT7_API_KEY": "ctx7sk-4a4494d8-2e8b-4048-b3cf-4d8363db1e44"
+      },
+      "enabled": true,
+      "timeout": 8000
+    }
+  }
+}

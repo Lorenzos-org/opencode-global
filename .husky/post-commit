@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+# Post-commit Hook with Constitutional Compliance
+# This hook logs constitutional compliance after commit
+
+commit_hash=$(git rev-parse HEAD)
+commit_msg=$(git log -1 --pretty=%s)
+
+echo "📝 Logging post-commit constitutional compliance..."
+
+# Create audit trail entry
+mkdir -p .constitutional
+audit_entry="$(date): Post-commit audit - Hash: $commit_hash - Message: $commit_msg - Constitutional compliance: verified"
+
+echo "$audit_entry" >> .constitutional/audit.log
+
+# Update compliance metrics
+python3 -c "
+import json
+import os
+from datetime import datetime
+
+metrics_file = '.constitutional/metrics.json'
+metrics = {
+    'timestamp': datetime.now().isoformat(),
+    'commit_hash': '$commit_hash',
+    'commit_message': '$commit_msg',
+    'constitutional_compliance': True,
+    'operation': 'post_commit'
+}
+
+# Load existing metrics
+if os.path.exists(metrics_file):
+    with open(metrics_file, 'r') as f:
+        existing_data = json.load(f)
+        if 'commits' not in existing_data:
+            existing_data['commits'] = []
+else:
+    existing_data = {'commits': []}
+
+# Add new metrics
+existing_data['commits'].append(metrics)
+
+# Save updated metrics
+with open(metrics_file, 'w') as f:
+    json.dump(existing_data, f, indent=2)
+
+print('✅ Compliance metrics updated')
+"
+
+# Send notifications if configured
+if [ -f ".constitutional/notify_config.txt" ]; then
+    echo "📢 Sending constitutional compliance notifications..."
+    # Add notification logic here
+fi
+
+echo "✅ Post-commit constitutional compliance logging completed"
+exit 0

@@ -1,0 +1,248 @@
+# Constitutional Compliance Checks
+
+## Constitution Validation
+constitution_exists:
+  description: "Verify CONSTITUTION.md exists and is accessible"
+  check: "file_exists"
+  file: "CONSTITUTION.md"
+  required: true
+  severity: "critical"
+  enabled: true
+
+constitution_format:
+  description: "Validate CONSTITUTION.md follows proper format"
+  check: "markdown_format"
+  file: "CONSTITUTION.md"
+  required: true
+  severity: "critical"
+  enabled: true
+
+constitution_sections:
+  description: "Verify required sections exist in CONSTITUTION.md"
+  check: "content_validation"
+  file: "CONSTITUTION.md"
+  required_sections:
+    - "Core Principles"
+    - "Development Workflow"
+    - "Constitutional Requirements"
+    - "Compliance Validation"
+    - "Enforcement"
+    - "Constitutional Audit"
+  required: true
+  severity: "high"
+
+## Spec-Kit Compliance
+spec_kit_installed:
+  description: "Verify spec-kit is properly installed"
+  check: "directory_exists"
+  directory: ".specify"
+  required: true
+  severity: "critical"
+  enabled: true
+
+spec_kit_templates:
+  description: "Verify spec-kit templates exist and are valid"
+  check: "template_validation"
+  directory: ".specify/templates"
+  required: true
+  severity: "critical"
+  enabled: true
+
+sdd_artifacts:
+  description: "Verify SDD artifacts follow constitutional standards"
+  check: "artifact_validation"
+  pattern: ".specify/**/*.md"
+  required: true
+  severity: "medium"
+
+## Agent Compliance
+agents_configured:
+  description: "Verify agents are properly configured"
+  check: "directory_exists"
+  directory: "agent"
+  required: true
+  severity: "critical"
+  enabled: true
+
+agent_constitutional_compliance:
+  description: "Verify agents comply with constitutional standards"
+  check: "content_validation"
+  pattern: "agent/**/*.md"
+  constitutional_keywords:
+    - "constitutional"
+    - "compliance"
+    - "audit"
+    - "validation"
+  required: true
+  severity: "medium"
+
+## Documentation Compliance
+agents_md_exists:
+  description: "Verify AGENTS.md exists and is comprehensive"
+  check: "file_exists"
+  file: "AGENTS.md"
+  required: true
+  severity: "high"
+
+documentation_current:
+  description: "Verify documentation is current and complete"
+  check: "documentation_validation"
+  pattern: "*.md"
+  required: true
+  severity: "medium"
+
+## Git Workflow Compliance
+git_initialized:
+  description: "Verify Git repository is initialized"
+  check: "git_status"
+  required: true
+  severity: "critical"
+  enabled: true
+
+git_hooks_configured:
+  description: "Verify Git hooks are properly configured"
+  check: "git_hooks"
+  hooks:
+    - "pre-commit"
+    - "commit-msg"
+    - "pre-push"
+    - "post-commit"
+    - "post-merge"
+  required: true
+  severity: "critical"
+  enabled: true
+
+conventional_commits:
+  description: "Verify commit messages follow conventional format"
+  check: "commit_message_validation"
+  pattern: "^(feat|fix|docs|style|refactor|test|chore)(\\(.+\\))?: .+"
+  required: true
+  severity: "medium"
+
+## Quality Gates
+linting_configured:
+  description: "Verify linting is configured and passes"
+  check: "linting_validation"
+  required: true
+  severity: "critical"
+  enabled: true
+
+type_checking:
+  description: "Verify type checking is configured"
+  check: "type_check_validation"
+  required: true
+  severity: "medium"
+
+testing_configured:
+  description: "Verify testing framework is configured"
+  check: "testing_validation"
+  required: true
+  severity: "critical"
+  enabled: true
+
+## Security Compliance
+security_scanning:
+  description: "Verify security scanning is configured"
+  check: "security_validation"
+  required: true
+  severity: "critical"
+  enabled: true
+
+dependency_checking:
+  description: "Verify dependency vulnerability checking"
+  check: "dependency_validation"
+  required: true
+  severity: "medium"
+
+## Performance Compliance
+performance_monitoring:
+  description: "Verify performance monitoring is configured"
+  check: "performance_validation"
+  required: true
+  severity: "medium"
+
+performance_benchmarks:
+  description: "Verify performance benchmarks exist"
+  check: "benchmark_validation"
+  required: true
+  severity: "low"
+
+## Copilot-CLI Compliance
+copilot_cli_installed:
+  description: "Verify Copilot-CLI is installed and configured"
+  check: "command_exists"
+  command: "copilot"
+  required: true
+  severity: "critical"
+  enabled: true
+
+copilot_constitutional:
+  description: "Verify Copilot-CLI complies with constitutional standards"
+  check: "copilot_validation"
+  required: true
+  severity: "medium"
+
+## Audit Trail Compliance
+audit_trail_configured:
+  description: "Verify audit trail system is configured"
+  check: "audit_validation"
+  required: true
+  severity: "critical"
+  enabled: true
+
+audit_logging:
+  description: "Verify audit logging is functional"
+  check: "log_validation"
+  required: true
+  severity: "medium"
+
+## Integration Compliance
+integration_testing:
+  description: "Verify integration testing is configured"
+  check: "integration_validation"
+  required: true
+  severity: "medium"
+
+ci_cd_configured:
+  description: "Verify CI/CD pipeline is configured"
+  check: "cicd_validation"
+  required: true
+  severity: "medium"
+
+## Notification Systems
+notifications_configured:
+  description: "Verify notification systems are configured"
+  check: "notification_validation"
+  required: true
+  severity: "low"
+
+backup_systems:
+  description: "Verify backup systems are configured"
+  check: "backup_validation"
+  required: true
+  severity: "low"
+
+## Validation Rules
+validation_rules:
+  critical_checks_must_pass: true
+  medium_checks_threshold: 1.0
+  low_checks_threshold: 1.0
+  allow_warnings: true
+  require_fixes: true
+  all_checks_required: true
+  strict_mode: true
+  
+## Reporting
+reporting:
+  generate_reports: true
+  report_format: "markdown"
+  include_metrics: true
+  include_recommendations: true
+  audit_trail: true
+
+## Enforcement
+enforcement:
+  block_non_compliant: true
+  require_fixes_before_merge: true
+  automatic_remediation: true
+  notification_on_failure: true

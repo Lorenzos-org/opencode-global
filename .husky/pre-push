@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+# Pre-push Hook with Constitutional Compliance
+# This hook ensures all changes comply with constitutional standards before push
+
+echo "🚀 Running pre-push constitutional compliance checks..."
+
+# Run full test suite
+echo "🧪 Running full test suite..."
+if command -v npm &> /dev/null; then
+    npm test
+    if [ $? -ne 0 ]; then
+        echo "❌ Tests failed. Cannot push without passing tests."
+        exit 1
+    fi
+fi
+
+# Run integration testing
+echo "🔗 Running integration tests..."
+if command -v npm &> /dev/null; then
+    npm run test:integration 2>/dev/null || echo "⚠️  Integration test issues found"
+fi
+
+# Run performance benchmarks
+echo "⚡ Running performance benchmarks..."
+if command -v npm &> /dev/null; then
+    npm run test:performance 2>/dev/null || echo "⚠️  Performance issues found"
+fi
+
+# Run comprehensive constitutional compliance check
+echo "📋 Running comprehensive constitutional compliance..."
+python3 -c "
+import yaml
+import sys
+import os
+
+def load_checks():
+    try:
+        with open('constitutional_checks.yml', 'r') as f:
+            return yaml.safe_load(f)
+    except FileNotFoundError:
+        print('❌ constitutional_checks.yml not found')
+        sys.exit(1)
+    except yaml.YAMLError as e:
+        print(f'❌ Error parsing constitutional_checks.yml: {e}')
+        sys.exit(1)
+
+def validate_all_checks(checks):
+    failed_checks = []
+    
+    for check_name, check_config in checks.items():
+        if isinstance(check_config, dict) and check_config.get('required', False):
+            if not check_config.get('enabled', True):
+                failed_checks.append(f'{check_name} (disabled)')
+                continue
+            
+            severity = check_config.get('severity', 'medium')
+            if severity not in ['critical', 'high', 'medium', 'low']:
+                failed_checks.append(f'{check_name} (invalid severity)')
+                continue
+    
+    if failed_checks:
+        print(f'❌ Failed checks: {\", \".join(failed_checks)}')
+        return False
+    
+    print('✅ All constitutional checks are properly configured')
+    return True
+
+if __name__ == '__main__':
+    checks = load_checks()
+    if not validate_all_checks(checks):
+        sys.exit(1)
+    print('✅ Comprehensive constitutional compliance passed')
+"
+
+# Log constitutional compliance
+echo "📝 Logging pre-push constitutional compliance..."
+mkdir -p .constitutional
+echo "$(date): Pre-push constitutional validation completed" >> .constitutional/audit.log
+
+echo "✅ Pre-push constitutional compliance checks completed"
+exit 0

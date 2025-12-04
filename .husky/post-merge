@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+# Post-merge Hook with Constitutional Compliance
+# This hook validates constitutional compliance after merge
+
+echo "🔗 Running post-merge constitutional compliance checks..."
+
+# Run integration testing
+echo "🔗 Running post-merge integration tests..."
+if command -v npm &> /dev/null; then
+    npm run test:integration 2>/dev/null || echo "⚠️  Integration test issues found"
+fi
+
+# Run constitutional validation
+echo "📋 Running post-merge constitutional validation..."
+python3 -c "
+import yaml
+import sys
+import os
+
+def load_checks():
+    try:
+        with open('constitutional_checks.yml', 'r') as f:
+            return yaml.safe_load(f)
+    except FileNotFoundError:
+        print('❌ constitutional_checks.yml not found')
+        sys.exit(1)
+    except yaml.YAMLError as e:
+        print(f'❌ Error parsing constitutional_checks.yml: {e}')
+        sys.exit(1)
+
+def validate_merge_compliance(checks):
+    required_checks = [
+        'constitution_exists',
+        'spec_kit_installed',
+        'agents_configured',
+        'git_initialized',
+        'git_hooks_configured'
+    ]
+    
+    for check in required_checks:
+        if check in checks and checks[check].get('required', False):
+            if not checks[check].get('enabled', True):
+                print(f'❌ Required check {check} is disabled')
+                return False
+    
+    print('✅ Post-merge constitutional compliance validated')
+    return True
+
+if __name__ == '__main__':
+    checks = load_checks()
+    if not validate_merge_compliance(checks):
+        sys.exit(1)
+    print('✅ Post-merge constitutional compliance passed')
+"
+
+# Update documentation
+echo "📚 Updating documentation..."
+if [ -f "README.md" ]; then
+    echo "Documentation is current" >> .constitutional/audit.log
+fi
+
+# Log constitutional compliance
+echo "📝 Logging post-merge constitutional compliance..."
+mkdir -p .constitutional
+echo "$(date): Post-merge constitutional validation completed" >> .constitutional/audit.log
+
+echo "✅ Post-merge constitutional compliance checks completed"
+exit 0

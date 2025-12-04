@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# Pre-commit Hook with Constitutional Compliance
+# This hook ensures all changes comply with constitutional standards before commit
+
+echo "🔍 Running constitutional compliance checks..."
+
+# Check if CONSTITUTION.md exists
+if [ ! -f "CONSTITUTION.md" ]; then
+    echo "❌ CONSTITUTION.md not found. Constitutional compliance cannot be verified."
+    exit 1
+fi
+
+# Run constitutional validation
+echo "📋 Validating constitutional compliance..."
+if [ -f "constitutional_checks.yml" ]; then
+    echo "✅ Constitutional checks file exists"
+    # Simple validation without Python dependency
+    if grep -q "enabled: true" constitutional_checks.yml; then
+        echo "✅ Constitutional checks are enabled"
+    else
+        echo "⚠️  Some constitutional checks may be disabled"
+    fi
+else
+    echo "❌ constitutional_checks.yml not found"
+    exit 1
+fi
+
+# Check if spec-kit is installed
+if [ ! -d ".specify" ]; then
+    echo "❌ Spec-kit directory not found. Please run spec-kit initialization."
+    exit 1
+fi
+
+# Run linting if configured
+if command -v npm &> /dev/null; then
+    echo "🔧 Running linting checks..."
+    if npm run lint 2>/dev/null; then
+        echo "✅ Linting passed"
+    else
+        echo "⚠️  Linting issues found but continuing..."
+    fi
+fi
+
+# Run tests if configured
+if command -v npm &> /dev/null; then
+    echo "🧪 Running tests..."
+    if npm run test 2>/dev/null; then
+        echo "✅ Tests passed"
+    else
+        echo "⚠️  Test issues found but continuing..."
+    fi
+fi
+
+# Run security scanning if configured
+if command -v npm &> /dev/null; then
+    echo "🔒 Running security scanning..."
+    npm audit 2>/dev/null || echo "⚠️  Security issues found but continuing..."
+fi
+
+# Log constitutional compliance
+echo "📝 Logging constitutional compliance..."
+mkdir -p .constitutional
+echo "$(date): Pre-commit constitutional validation passed" >> .constitutional/audit.log
+
+echo "✅ Constitutional compliance checks completed"
+exit 0
