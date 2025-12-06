@@ -1,11 +1,41 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "snapshot": true,
+  "model": "zen/big-pickle",
+  "small_model": "opencode/gpt-5-nano",
   "tools": {
     "glob": false,
-    "mgrep": true
+    "mgrep": true,
+    "todoread": true,
+    "todowrite": true
   },
   "mcp": {
+    "MCP_DOCKER": {
+      "type": "local",
+      "command": ["docker", "mcp", "gateway", "run"],
+      "enabled": false,
+      "timeout": 8000
+    },
+    "exa": {
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp",
+      "enabled": true,
+      "timeout": 8000
+    },
+    "morph": {
+      "type": "local",
+      "command": ["bunx", "@morphllm/morphmcp"],
+      "environment": {
+      },
+      "enabled": true,
+      "timeout": 10000
+    },
+    "mgrep": {
+      "type": "local",
+      "command": ["mgrep", "mcp"],
+      "enabled": true,
+      "timeout": 5000
+    },
     "memory": {
       "type": "local",
       "command": [
@@ -28,7 +58,8 @@
         "/Users/lorenzo/projects",
         "/Users/lorenzo/Documents",
         "/Users/lorenzo/Downloads",
-        "/Users/lorenzo/Desktop"
+        "/Users/lorenzo/Desktop",
+        "/Users/Lorenzo/.config/opencode/"
       ],
       "enabled": true,
       "timeout": 5000
@@ -55,14 +86,6 @@
       },
       "enabled": true,
       "timeout": 8000
-    },
-    "mgrep": {
-      "type": "local",
-      "command": [
-        "mgrep",
-        "mcp"
-      ],
-      "enabled": true
     }
   }
 }
