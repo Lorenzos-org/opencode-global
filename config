@@ -1,0 +1,9 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	worktree = /Users/lorenzo/.config/opencode
+	ignorecase = true
+	precomposeunicode = true
+	autocrlf = false
