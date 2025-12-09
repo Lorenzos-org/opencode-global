@@ -1,11 +1,8 @@
+---
 description: Provide AI-assisted architecture suggestions with constitutional standards validation and security guidelines compliance
-mode: command
-agent: @plan
-tools: read, write, bash
-permissions:
-  read: allow
-  write: ask
-  bash: ask
+agent: plan
+subtask: true
+---
 
 # Copilot Suggest Command
 

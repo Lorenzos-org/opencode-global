@@ -1,6 +1,7 @@
 ---
 description: Expert database architect for Prisma ORM, PostgreSQL schema design, migrations, query optimization, and production deployments
-mode: all
+mode: primary
+temperature: 0.2
 tools:
   read: true
   write: true

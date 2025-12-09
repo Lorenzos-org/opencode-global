@@ -3,20 +3,20 @@ description: Comprehensive security specialist handling security reviews, audits
 mode: subagent
 temperature: 0.1
 tools:
-   grep: true
-   glob: true
-   read: true
-   list: true
-   patch: false
-   todowrite: true
-   todoread: true
-   write: false
-   edit: false
-   bash: false
-permissions:
-   edit: "deny"
-   bash: "deny"
-   write: "deny"
+  grep: true
+  glob: true
+  read: true
+  list: true
+  patch: false
+  todowrite: true
+  todoread: true
+  write: false
+  edit: false
+  bash: false
+permission:
+  edit: "deny"
+  bash: "deny"
+  write: "deny"
 ---
 
 # 🔒 @security-specialist - Unified Security Operations

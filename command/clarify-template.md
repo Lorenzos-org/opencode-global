@@ -1,5 +1,7 @@
 ---
 description: "Clarify underspecified areas in requirements and specifications"
+agent: plan
+subtask: true
 ---
 
 # Clarify Command

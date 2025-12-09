@@ -1,11 +1,8 @@
+---
 description: Perform AI-assisted code review with constitutional compliance checking, security vulnerability assessment, and quality metrics validation
-mode: command
-agent: @code-analyzer
-tools: read, write, bash
-permissions:
-  read: allow
-  write: ask
-  bash: ask
+agent: code-reviewer
+subtask: true
+---
 
 # Copilot Review Command
 

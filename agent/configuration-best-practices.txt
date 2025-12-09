@@ -1,0 +1,730 @@
+# ⚙️ Agent Configuration Best Practices
+
+**Generated**: December 8, 2025  
+**Purpose**: Ensure optimal agent performance, security, and maintainability  
+**Ecosystem Version**: OpenCode v2.0 with 44+ specialized agents
+
+---
+
+## 🏗️ YAML HEADER STANDARDS
+
+### **Required Fields (Must Have)**
+```yaml
+---
+description: [Clear, concise agent purpose]
+mode: [primary|subagent]
+---
+```
+
+### **Optional Fields (Recommended)**
+```yaml
+---
+description: Clear agent purpose
+mode: primary|subagent
+temperature: [0.0-1.0 based on agent type]
+permission:
+  read: [allow|deny|ask]
+  write: [allow|deny|ask]
+  edit: [allow|deny|ask]
+  bash: [allow|deny|ask]
+tools:
+  tool_name: [true|false]
+---
+```
+
+### **Prohibited Fields (Never Use)**
+```yaml
+# ❌ NEVER include these fields:
+model: [excluded - let system handle]
+subtask: [commands only, not agents]
+permissions: [plural - use singular permission:]
+tools: [array format - use object format]
+```
+
+---
+
+## 🌡️ TEMPERATURE OPTIMIZATION
+
+### **Agent-Specific Temperature Settings**
+
+#### **Analysis & Review Agents** (Deterministic)
+```yaml
+# @plan, @code-reviewer, @security-specialist, @test-agent
+temperature: 0.1-0.2
+```
+**Rationale**: High precision, low creativity needed for accurate analysis
+
+#### **Development Agents** (Balanced)
+```yaml
+# @developer, @build
+temperature: 0.3-0.5
+```
+**Rationale**: Balance between following patterns and creative problem-solving
+
+#### **Creative & Documentation Agents** (Moderate Creativity)
+```yaml
+# @documentation-writer, @research
+temperature: 0.2-0.4
+```
+**Rationale**: Some creativity for clear explanations, but maintain accuracy
+
+#### **Specialized High-Creativity Agents** (Creative)
+```yaml
+# Brainstorming, design ideation (if exist)
+temperature: 0.6-0.8
+```
+**Rationale**: Maximum creativity for ideation and exploration
+
+### **Temperature Decision Matrix**
+| Agent Type | Temperature Range | Use Case |
+|------------|-------------------|----------|
+| Analysis/Review | 0.1-0.2 | Code analysis, security review, testing |
+| Planning | 0.1-0.3 | Architecture planning, specification creation |
+| Development | 0.3-0.5 | Code implementation, feature development |
+| Documentation | 0.2-0.4 | Technical writing, API documentation |
+| Creative | 0.6-0.8 | Brainstorming, design exploration |
+
+---
+
+## 🔧 TOOLS CONFIGURATION
+
+### **Correct Format (Object Only)**
+```yaml
+# ✅ CORRECT - Object format
+tools:
+  read: true
+  write: true
+  bash: false
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+
+# ❌ WRONG - Array format (NOT supported)
+tools: [read, write, bash, grep, glob]
+```
+
+### **Tool Selection by Agent Type**
+
+#### **Read-Only Agents** (@plan, @research)
+```yaml
+tools:
+  read: true
+  grep: true
+  glob: true
+  list: true
+  webfetch: true
+  todowrite: true
+  todoread: true
+  # No write/edit/bash for safety
+```
+
+#### **Implementation Agents** (@developer, @build)
+```yaml
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+  # Full tool access for implementation
+```
+
+#### **Review Agents** (@code-reviewer, @security-specialist)
+```yaml
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+  # Full access for comprehensive review
+```
+
+#### **Testing Agents** (@test-agent)
+```yaml
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  # Full access for test execution and validation
+```
+
+---
+
+## 🔐 PERMISSIONS CONFIGURATION
+
+### **Permission Format (Object Only)**
+```yaml
+# ✅ CORRECT - Object format
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
+
+# ❌ WRONG - Array format
+permission: [allow, allow, allow, allow]
+```
+
+### **Permission Levels by Agent Type**
+
+#### **Safe/Read-Only Agents**
+```yaml
+permission:
+  read: allow
+  write: deny
+  edit: deny
+  bash: deny
+```
+
+#### **Implementation Agents**
+```yaml
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
+```
+
+#### **Security-Sensitive Agents**
+```yaml
+permission:
+  read: allow
+  write: ask
+  edit: ask
+  bash: ask
+```
+
+#### **Documentation Agents**
+```yaml
+permission:
+  read: allow
+  write: allow
+  edit: ask
+  bash: deny
+```
+
+### **Permission Decision Matrix**
+| Agent Type | Read | Write | Edit | Bash | Rationale |
+|------------|------|-------|------|------|-----------|
+| Planning | allow | deny | deny | deny | Read-only analysis |
+| Development | allow | allow | allow | allow | Full implementation |
+| Review | allow | allow | allow | allow | Comprehensive review |
+| Testing | allow | allow | allow | allow | Test execution |
+| Documentation | allow | allow | ask | deny | Safe documentation |
+| Security | allow | ask | ask | ask | Security-sensitive |
+
+---
+
+## 📋 MODE CONFIGURATION
+
+### **Primary vs Subagent Decision**
+
+#### **Primary Agents** (Main Interface)
+```yaml
+mode: primary
+```
+**Characteristics**:
+- Main user interaction point
+- Full tool access
+- Can invoke subagents
+- Manages complex workflows
+- Examples: @build, @plan
+
+#### **Subagents** (Specialized Assistants)
+```yaml
+mode: subagent
+```
+**Characteristics**:
+- Specialized domain expertise
+- Focused task execution
+- Isolated sessions
+- Invoked by primary agents
+- Examples: @developer, @security-specialist, @test-agent
+
+### **Mode Selection Criteria**
+- **Primary**: Complex workflows, coordination, main interfaces
+- **Subagent**: Specialized tasks, focused expertise, isolated execution
+
+---
+
+## 🏛️ CONSTITUTIONAL COMPLIANCE
+
+### **Constitutional Integration Pattern**
+```yaml
+# Include constitutional compliance in agent description
+description: Agent that performs X with constitutional compliance validation
+
+# Add constitutional checks to core tasks
+# Reference /CONSTITUTION.md when available
+# Generate constitutional_checks.yml for validation
+```
+
+### **Compliance Configuration**
+```yaml
+# Constitutional compliance agents
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  todowrite: true
+  todoread: true
+
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: ask  # Ask for constitutional changes
+```
+
+---
+
+## 🔄 CHAINING CONFIGURATION
+
+### **Agent Chaining Support**
+```yaml
+# For agents that invoke other agents
+description: Agent that coordinates X with multi-agent orchestration
+
+# Include chaining patterns in agent description
+# Document expected inputs/outputs for handoffs
+# Specify context preservation strategies
+```
+
+### **Capability-Based Configuration**
+```yaml
+# For capability-based agents like @developer
+description: Unified development operations with capability-based specialization
+
+# Document capabilities clearly
+# Include capability invocation patterns
+# Specify capability-specific parameters
+```
+
+---
+
+## 📊 CONFIGURATION VALIDATION
+
+### **YAML Syntax Validation**
+```yaml
+# Must start and end with ---
+---
+description: Example
+mode: subagent
+---
+
+# Proper 2-space indentation
+permission:
+  read: allow
+  write: allow
+
+# No tabs, proper quoting
+tools:
+  "tool-with-dash": true
+  "tool_with_underscore": true
+```
+
+### **Field Validation Checklist**
+```yaml
+✅ Required fields present: description, mode
+✅ No prohibited fields: model, subtask, permissions (plural)
+✅ Correct tool format: object, not array
+✅ Correct permission format: object, not array
+✅ Valid mode value: primary or subagent
+✅ Temperature in range: 0.0-1.0
+✅ Proper YAML syntax: 2-space indentation
+✅ Valid tool names: match available tools
+✅ Logical permission levels: match agent purpose
+```
+
+### **Configuration Testing**
+```bash
+# Test YAML syntax
+python -c "import yaml; yaml.safe_load(open('agent.md'))"
+
+# Validate against schema
+# Check for prohibited fields
+# Verify tool names
+# Test permission logic
+```
+
+---
+
+## 🎯 AGENT-SPECIFIC CONFIGURATIONS
+
+### **@build Configuration Template**
+```yaml
+---
+description: Elite build orchestrator combining ecosystem coordination with implementation excellence
+mode: primary
+temperature: 0.4
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  list: true
+  todowrite: true
+  todoread: true
+  webfetch: true
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
+---
+```
+
+### **@plan Configuration Template**
+```yaml
+---
+description: Primary planning agent that analyzes codebases, researches solutions, and creates comprehensive implementation plans using Spec-Driven Development methodology
+mode: primary
+temperature: 0.15
+tools:
+  read: true
+  write: false
+  edit: false
+  bash: false
+  grep: true
+  glob: true
+  list: true
+  webfetch: true
+  task: true
+  todowrite: true
+  todoread: true
+permission:
+  read: allow
+  write: deny
+  edit: deny
+  bash: deny
+---
+```
+
+### **@developer Configuration Template**
+```yaml
+---
+description: Unified developer framework for backend and frontend development with capability-based specialization
+mode: subagent
+temperature: 0.2
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+  webfetch: true
+permission:
+  bash: allow
+  edit: allow
+  write: allow
+---
+```
+
+### **@security-specialist Configuration Template**
+```yaml
+---
+description: Advanced security automation with vulnerability scanning, compliance monitoring, and threat detection
+mode: subagent
+temperature: 0.2
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
+---
+```
+
+### **@test-agent Configuration Template**
+```yaml
+---
+description: Execute comprehensive testing with git-aware strategies and structured result reporting
+mode: subagent
+temperature: 0.3
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
+---
+```
+
+---
+
+## 🚀 ADVANCED CONFIGURATION PATTERNS
+
+### **Capability-Based Specialization**
+```yaml
+# For agents with multiple capabilities
+description: Agent that performs X with capability-based specialization
+
+# Document capabilities in description
+# Use consistent capability invocation
+# Provide capability-specific examples
+```
+
+### **Multi-Modal Agent Configuration**
+```yaml
+# For agents that handle multiple domains
+description: Multi-domain agent handling X, Y, and Z with specialized workflows
+
+# Include domain-specific logic
+# Provide domain selection mechanisms
+# Document cross-domain interactions
+```
+
+### **Integration-Ready Configuration**
+```yaml
+# For agents designed for integration
+description: Integration-ready agent with standardized interfaces
+
+# Include integration patterns
+# Document API contracts
+# Provide integration examples
+```
+
+---
+
+## 📈 CONFIGURATION MAINTENANCE
+
+### **Regular Configuration Reviews**
+```bash
+# Monthly configuration audits
+# Quarterly optimization reviews
+# Annual compliance validation
+# Continuous performance monitoring
+```
+
+### **Configuration Update Process**
+```bash
+# 1. Backup current configuration
+# 2. Test changes in development
+# 3. Validate against standards
+# 4. Update documentation
+# 5. Deploy with rollback plan
+```
+
+### **Version Control Best Practices**
+```bash
+# Track configuration changes
+# Document configuration decisions
+# Maintain configuration history
+# Use feature flags for experimental changes
+```
+
+---
+
+## 🔍 TROUBLESHOOTING CONFIGURATION ISSUES
+
+### **Common Configuration Problems**
+
+#### **YAML Syntax Errors**
+```yaml
+# Problem: Invalid YAML syntax
+# Solution: Use YAML linter, check indentation
+# Prevention: Use configuration validation tools
+```
+
+#### **Invalid Tool Names**
+```yaml
+# Problem: Using non-existent tools
+# Solution: Check available tools documentation
+# Prevention: Use tool name validation
+```
+
+#### **Permission Mismatches**
+```yaml
+# Problem: Permissions don't match agent purpose
+# Solution: Review agent responsibilities
+# Prevention: Use permission decision matrix
+```
+
+#### **Temperature Issues**
+```yaml
+# Problem: Temperature inappropriate for agent type
+# Solution: Use temperature optimization guide
+# Prevention: Follow agent-specific recommendations
+```
+
+### **Configuration Debugging**
+```bash
+# Validate YAML syntax
+yamllint agent.md
+
+# Check for prohibited fields
+grep -E "(model|subtask|permissions:)" agent.md
+
+# Validate tool format
+python -c "
+import yaml
+config = yaml.safe_load(open('agent.md'))
+if 'tools' in config and isinstance(config['tools'], list):
+    print('ERROR: Tools should be object, not array')
+"
+
+# Test agent functionality
+opencode test agent.md
+```
+
+---
+
+## 🎯 CONFIGURATION OPTIMIZATION CHECKLIST
+
+### **Pre-Deployment Checklist**
+```yaml
+✅ YAML syntax validation passed
+✅ Required fields present (description, mode)
+✅ No prohibited fields included
+✅ Tool format is object, not array
+✅ Permission format is object, not array
+✅ Mode value is valid (primary/subagent)
+✅ Temperature is appropriate for agent type
+✅ Tool names match available tools
+✅ Permission levels match agent purpose
+✅ Constitutional compliance included if needed
+✅ Chaining patterns documented if applicable
+✅ Capabilities clearly defined if applicable
+```
+
+### **Post-Deployment Validation**
+```yaml
+✅ Agent loads without errors
+✅ Tools are accessible and functional
+✅ Permissions work as expected
+✅ Temperature produces appropriate output
+✅ Agent performs intended tasks
+✅ Integration with other agents works
+✅ Quality gates function properly
+✅ Performance meets expectations
+✅ Security requirements satisfied
+✅ Compliance standards met
+```
+
+---
+
+## 📚 REFERENCE MATERIALS
+
+### **Official Documentation**
+- OpenCode Agent Configuration Guide
+- YAML Syntax Reference
+- Tool Registry Documentation
+- Permission System Guide
+- Constitutional Compliance Framework
+
+### **Community Best Practices**
+- Agent Configuration Templates
+- Temperature Optimization Studies
+- Permission Security Guidelines
+- Performance Tuning Recommendations
+- Integration Pattern Library
+
+### **Validation Tools**
+```bash
+# YAML Linter
+yamllint agent.md
+
+# Configuration Validator
+opencode validate-config agent.md
+
+# Performance Tester
+opencode test-agent agent.md
+
+# Security Scanner
+opencode security-scan agent.md
+```
+
+---
+
+## 🎓 TRAINING & ONBOARDING
+
+### **New Agent Development**
+```yaml
+Training Steps:
+1. Study existing agent configurations
+2. Understand YAML header standards
+3. Learn tool permission system
+4. Review temperature optimization guidelines
+5. Practice with template configurations
+6. Validate with testing tools
+7. Document configuration decisions
+8. Submit for review
+```
+
+### **Configuration Maintenance**
+```yaml
+Maintenance Tasks:
+1. Regular configuration audits
+2. Performance monitoring
+3. Security validation
+4. Compliance checking
+5. Documentation updates
+6. Team training
+7. Best practice sharing
+8. Continuous improvement
+```
+
+---
+
+## 🎯 CONCLUSION
+
+This configuration best practices guide provides:
+
+✅ **Complete YAML standards** for all agent configurations
+✅ **Temperature optimization** guidelines for different agent types
+✅ **Tool and permission** configuration best practices
+✅ **Validation and testing** procedures
+✅ **Troubleshooting guides** for common issues
+✅ **Maintenance procedures** for ongoing optimization
+
+**Key Principles:**
+1. **Consistency**: Use standard formats and patterns
+2. **Security**: Follow principle of least privilege
+3. **Performance**: Optimize temperature and tool access
+4. **Maintainability**: Document decisions and changes
+5. **Compliance**: Include constitutional requirements
+
+**Success comes from:**
+- Following established standards and patterns
+- Regular validation and testing
+- Continuous monitoring and optimization
+- Documentation and knowledge sharing
+- Security and compliance by design
+
+---
+
+*Last Updated: December 2025*
+*Configuration Framework: OpenCode v2.0*
+*Compliance: Constitutional + SDD Integration*

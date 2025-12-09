@@ -1,7 +1,6 @@
 ---
 description: General agent to route user intent
 mode: subagent
-Model: opencode/grok-code
 temperature: 0.4
 tools:
   grep: true
@@ -1020,7 +1019,7 @@ tools:
   read: true
   write: ask
   bash: ask
-permissions:
+permission:
   read: allow
   write: ask
   bash:

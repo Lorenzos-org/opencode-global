@@ -1,0 +1,598 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    3D SEMANTIC RELATIONSHIP GRAPH                             ║
+║                    True 3D Visualization of Agent Ecosystem                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           3D COORDINATE SYSTEM                                │
+│                                                                             │
+│                      Z (DEPTH)                                              │
+│                        │                                                    │
+│                        │                                                    │
+│                        │                                                    │
+│                        │                                                    │
+│                        │                                                    │
+│                        │                                                    │
+│  Y (HEIGHT) ──────────┼───────── X (WIDTH)                                  │
+│                       /│                                                    │
+│                      / │                                                    │
+│                     /  │                                                    │
+│                    /   │                                                    │
+│                   /    │                                                    │
+│                  /     │                                                    │
+│                                                                             │
+│  VIEWING ANGLE: Isometric (45° X, 30° Y)                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🌐 3D AGENT ECOSYSTEM OVERVIEW
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                              Z (FRONT LAYER)                                │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  [GENERAL]        [FRONTEND]        [BACKEND]        [FULLSTACK]    │    │
+│  │     ●                ●                 ●                ●            │    │
+│  │   (0,8,0)          (6,8,0)           (12,8,0)         (18,8,0)      │    │
+│  │     │                │                 │                │            │    │
+│  │  Core Agent       UI Expert         API Expert      Integration   │    │
+│  │  Coordinator      Components         Systems         Specialist    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│                              Z (MIDDLE LAYER)                               │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  [SECURITY]      [PERFORMANCE]      [TESTING]      [DOCUMENTATION] │    │
+│  │       ●               ●                 ●                ●           │    │
+│  │    (3,4,5)          (9,4,5)           (15,4,5)         (21,4,5)     │    │
+│  │       │               │                 │                │           │    │
+│  │   Security        Performance       Quality        Documentation  │    │
+│  │   Auditor         Optimizer         Assurance      Specialist      │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│                              Z (BACK LAYER)                                 │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  [CI/CD]          [DEVEX]           [CODE REVIEW]   [CONSTITUTIONAL]│    │
+│  │      ●                ●                   ●                ●          │    │
+│  │   (0,0,10)         (6,0,10)            (12,0,10)        (18,0,10)   │    │
+│  │      │                │                   │                │          │    │
+│  │  Pipeline        Developer         Quality         Constitutional   │    │
+│  │  Engineer        Experience        Reviewer        Auditor         │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🔗 3D RELATIONSHIP CONNECTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  PRIMARY CONNECTIONS (STRONG TIES - ██████):                                │
+│                                                                             │
+│  General Agent (0,8,0) ──────── Frontend (6,8,0)                           │
+│         │                           │                                       │
+│         └─────── Backend (12,8,0) ─┘                                       │
+│                 │                       │                                   │
+│                 └─────── Fullstack (18,8,0) ────────┘                         │
+│                                                                             │
+│  Security (3,4,5) ──────── Performance (9,4,5)                              │
+│         │                           │                                       │
+│         └─────── Testing (15,4,5) ─┘                                       │
+│                 │                       │                                   │
+│                 └─────── Documentation (21,4,5) ──┘                         │
+│                                                                             │
+│  CI/CD (0,0,10) ──────── DevEx (6,0,10)                                   │
+│         │                           │                                       │
+│         └─────── Code Review (12,0,10) ─┘                                   │
+│                 │                           │                                 │
+│                 └─────── Constitutional (18,0,10) ──┘                       │
+│                                                                             │
+│  VERTICAL INTEGRATION (LAYER CONNECTIONS):                                   │
+│                                                                             │
+│  General (0,8,0) ──── Security (3,4,5) ──── CI/CD (0,0,10)                  │
+│         │                 │                 │                               │
+│         └─────────────────┼─────────────────┘                               │
+│                           │                                                 │
+│  Frontend (6,8,0) ──── Performance (9,4,5) ──── DevEx (6,0,10)             │
+│         │                 │                 │                               │
+│         └─────────────────┼─────────────────┘                               │
+│                           │                                                 │
+│  Backend (12,8,0) ──── Testing (15,4,5) ──── Code Review (12,0,10)          │
+│         │                 │                 │                               │
+│         └─────────────────┼─────────────────┘                               │
+│                           │                                                 │
+│  Fullstack (18,8,0) ──── Documentation (21,4,5) ──── Constitutional (18,0,10)│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 3D SEMANTIC CLUSTERING
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🎯 DEVELOPMENT CLUSTER (FRONT-CENTER):                                     │
+│                                                                             │
+│          Z: 0-5                                                             │
+│    ┌─────────────────────────────────────────┐                              │
+│    │                                         │                              │
+│    │    [GENERAL]      [FRONTEND]            │                              │
+│    │        ●──────────────●                 │                              │
+│    │        │              │                 │                              │
+│    │        │              │                 │                              │
+│    │    [BACKEND]───────[FULLSTACK]          │                              │
+│    │        ●──────────────●                 │                              │
+│    │                                         │                              │
+│    │    SEMANTIC FOCUS: CODE PRODUCTION      │                              │
+│    │    KEYWORDS: develop, build, create    │                              │
+│    │    STRENGTH: 0.95                       │                              │
+│    └─────────────────────────────────────────┘                              │
+│                                                                             │
+│  🔍 QUALITY CLUSTER (MIDDLE):                                               │
+│                                                                             │
+│          Z: 5-8                                                             │
+│    ┌─────────────────────────────────────────┐                              │
+│    │                                         │                              │
+│    │  [SECURITY]    [PERFORMANCE]            │                              │
+│    │      ●──────────────●                   │                              │
+│    │      │              │                   │                              │
+│    │      │              │                   │                              │
+│    │  [TESTING]───────[DOCUMENTATION]       │                              │
+│    │      ●──────────────●                   │                              │
+│    │                                         │                              │
+│    │    SEMANTIC FOCUS: QUALITY ASSURANCE    │                              │
+│    │    KEYWORDS: test, secure, optimize     │                              │
+│    │    STRENGTH: 0.88                       │                              │
+│    └─────────────────────────────────────────┘                              │
+│                                                                             │
+│  ⚙️ OPERATIONS CLUSTER (BACK):                                              │
+│                                                                             │
+│          Z: 8-12                                                            │
+│    ┌─────────────────────────────────────────┐                              │
+│    │                                         │                              │
+│    │  [CI/CD]        [DEVEX]                │                              │
+│    │    ●──────────────●                     │                              │
+│    │    │              │                     │                              │
+│    │    │              │                     │                              │
+│    │  [CODE REVIEW]──[CONSTITUTIONAL]       │                              │
+│    │    ●──────────────●                     │                              │
+│    │                                         │                              │
+│    │    SEMANTIC FOCUS: PROCESS MANAGEMENT   │                              │
+│    │    KEYWORDS: deploy, review, comply     │                              │
+│    │    STRENGTH: 0.92                       │                              │
+│    └─────────────────────────────────────────┘                              │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🎨 3D VISUALIZATION WITH DEPTH INDICATORS
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  ISOMETRIC 3D VIEW (ROTATED 45°):                                           │
+│                                                                             │
+│              Z (DEPTH) →                                                    │
+│            ┌─────────────────────────────────────────────────────────┐     │
+│            │                                                         │     │
+│            │   ● GENERAL        ● FRONTEND      ● BACKEND    ● FULLSTACK │     │
+│            │    │                │               │            │          │     │
+│            │    │╲               │╲              │╲           │╲         │     │
+│            │    │ ╲              │ ╲             │ ╲          │ ╲        │     │
+│            │    │  ╲             │  ╲            │  ╲         │  ╲       │     │
+│            │    │   ╲            │   ╲           │   ╲        │   ╲      │     │
+│            │    │    ╲           │    ╲          │    ╲       │    ╲     │     │
+│            │    │     ╲          │     ╲         │     ╲      │     ╲    │     │
+│            │    │      ╲         │      ╲        │      ╲     │      ╲   │     │
+│            │    │       ╲        │       ╲       │       ╲    │       ╲  │     │
+│            │    │        ╲       │        ╲      │        ╲   │        ╲ │     │
+│            │    │         ╲      │         ╲     │         ╲  │         ╲│     │
+│            │    │          ╲     │          ╲    │          ╲ │          ●│     │
+│            │    │           ╲    │           ╲   │           ╲│ SECURITY   │     │
+│            │    │            ╲   │            ╲  │            ●            │     │
+│            │    │             ╲  │             ╲ │             │            │     │
+│            │    │              ╲ │              ╲│             │            │     │
+│            │    │               ╲│               ●             │            │     │
+│            │    │                ● PERFORMANCE   │             │            │     │
+│            │    │                │               │             │            │     │
+│            │    │                │               │             │            │     │
+│            │    │                │               │             │            │     │
+│            │    │                │               │             │            │     │
+│            │    ●                ●               ●             ●            │     │
+│            │ TESTING          DOCUMENTATION   CI/CD         DEVEX        │     │
+│            │                                                         │     │
+│            └─────────────────────────────────────────────────────────┘     │
+│                                                                             │
+│  DEPTH LEGEND:                                                              │
+│  ● Front Layer (Z=0-3)   ● Middle Layer (Z=4-7)   ● Back Layer (Z=8-12)     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🔄 3D INTERACTION FLOWS
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🌊 WORKFLOW FLOWS (DYNAMIC PATHS):                                         │
+│                                                                             │
+│  1. DEVELOPMENT WORKFLOW:                                                   │
+│     General (0,8,0) → Frontend (6,8,0) → Backend (12,8,0) → Fullstack (18,8,0)│
+│          ↓                    ↓                    ↓                     ↓      │
+│     Security (3,4,5) → Performance (9,4,5) → Testing (15,4,5) → Doc (21,4,5) │
+│          ↓                    ↓                    ↓                     ↓      │
+│     CI/CD (0,0,10) → DevEx (6,0,10) → Code Review (12,0,10) → Const (18,0,10)│
+│                                                                             │
+│  2. QUALITY ASSURANCE FLOW:                                                 │
+│     Security (3,4,5) ↔ Performance (9,4,5) ↔ Testing (15,4,5)               │
+│          ↓                    ↓                    ↓                       │
+│     Code Review (12,0,10) ← Documentation (21,4,5) ← Constitutional (18,0,10) │
+│                                                                             │
+│  3. OPERATIONS FLOW:                                                        │
+│     CI/CD (0,0,10) → DevEx (6,0,10) → Code Review (12,0,10) → Constitutional │
+│          ↑                    ↑                    ↑                     ↑      │
+│     General (0,8,0) ← Frontend (6,8,0) ← Backend (12,8,0) ← Fullstack (18,8,0)│
+│                                                                             │
+│  4. CROSS-LAYER COMMUNICATION:                                              │
+│     Diagonal connections create 3D mesh network                              │
+│     Z-axis connections enable vertical integration                           │
+│     XY-plane connections enable horizontal coordination                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+📈 3D SEMANTIC DISTANCE MATRIX
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  EUCLIDEAN DISTANCE BETWEEN AGENTS (3D SPACE):                              │
+│                                                                             │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┐   │
+│  │    AGENT    │   GENERAL   │  FRONTEND   │   BACKEND   │  FULLSTACK  │   │
+│  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   │
+│  │   GENERAL   │     0.0     │     6.0     │    12.0     │    18.0     │   │
+│  │  FRONTEND   │     6.0     │     0.0     │     6.0     │    12.0     │   │
+│  │   BACKEND   │    12.0     │     6.0     │     0.0     │     6.0     │   │
+│  │  FULLSTACK  │    18.0     │    12.0     │     6.0     │     0.0     │   │
+│  └─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘   │
+│                                                                             │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┐   │
+│  │    AGENT    │  SECURITY   │PERFORMANCE │   TESTING   │ DOCUMENTATION│   │
+│  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   │
+│  │  SECURITY   │     0.0     │     6.0     │    12.0     │    18.0     │   │
+│  │PERFORMANCE │     6.0     │     0.0     │     6.0     │    12.0     │   │
+│  │   TESTING   │    12.0     │     6.0     │     0.0     │     6.0     │   │
+│  │ DOCUMENTATION│   18.0     │    12.0     │     6.0     │     0.0     │   │
+│  └─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘   │
+│                                                                             │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┐   │
+│  │    AGENT    │    CI/CD    │    DEVEX    │ CODE REVIEW │CONSTITUTIONAL│   │
+│  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   │
+│  │    CI/CD    │     0.0     │     6.0     │    12.0     │    18.0     │   │
+│  │    DEVEX    │     6.0     │     0.0     │     6.0     │    12.0     │   │
+│  │ CODE REVIEW │    12.0     │     6.0     │     0.0     │     6.0     │   │
+│  │CONSTITUTIONAL│   18.0     │    12.0     │     6.0     │     0.0     │   │
+│  └─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘   │
+│                                                                             │
+│  SEMANTIC PROXIMITY INTERPRETATION:                                         │
+│  • 0-3 units: Very High Semantic Similarity                                 │
+│  • 4-6 units: High Semantic Similarity                                      │
+│  • 7-10 units: Moderate Semantic Similarity                                 │
+│  • 11+ units: Low Semantic Similarity                                       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 3D AGENT PROPERTIES & ATTRIBUTES
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  AGENT ATTRIBUTE VECTORS (3D SPACE):                                        │
+│                                                                             │
+│  🎯 GENERAL AGENT (0,8,0):                                                  │
+│     POSITION: (X=0, Y=8, Z=0)                                               │
+│     SEMANTIC WEIGHT: 0.95                                                   │
+│     CONNECTION STRENGTH: ████████░░ 80%                                     │
+│     SPECIALIZATION: Coordination                                            │
+│     INFLUENCE RADIUS: 8.5 units                                            │
+│                                                                             │
+│  🎨 FRONTEND AGENT (6,8,0):                                                 │
+│     POSITION: (X=6, Y=8, Z=0)                                               │
+│     SEMANTIC WEIGHT: 0.92                                                   │
+│     CONNECTION STRENGTH: ████████░░ 80%                                     │
+│     SPECIALIZATION: UI Components                                           │
+│     INFLUENCE RADIUS: 7.8 units                                            │
+│                                                                             │
+│  ⚙️ BACKEND AGENT (12,8,0):                                                 │
+│     POSITION: (X=12, Y=8, Z=0)                                              │
+│     SEMANTIC WEIGHT: 0.90                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: API Systems                                             │
+│     INFLUENCE RADIUS: 8.2 units                                            │
+│                                                                             │
+│  🔄 FULLSTACK AGENT (18,8,0):                                                │
+│     POSITION: (X=18, Y=8, Z=0)                                              │
+│     SEMANTIC WEIGHT: 0.88                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: Integration                                             │
+│     INFLUENCE RADIUS: 9.1 units                                            │
+│                                                                             │
+│  🔒 SECURITY AGENT (3,4,5):                                                  │
+│     POSITION: (X=3, Y=4, Z=5)                                               │
+│     SEMANTIC WEIGHT: 0.94                                                   │
+│     CONNECTION STRENGTH: █████████░ 90%                                     │
+│     SPECIALIZATION: Security Audit                                          │
+│     INFLUENCE RADIUS: 7.5 units                                            │
+│                                                                             │
+│  ⚡ PERFORMANCE AGENT (9,4,5):                                               │
+│     POSITION: (X=9, Y=4, Z=5)                                               │
+│     SEMANTIC WEIGHT: 0.89                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: Optimization                                            │
+│     INFLUENCE RADIUS: 8.0 units                                            │
+│                                                                             │
+│  🧪 TESTING AGENT (15,4,5):                                                 │
+│     POSITION: (X=15, Y=4, Z=5)                                              │
+│     SEMANTIC WEIGHT: 0.91                                                   │
+│     CONNECTION STRENGTH: ████████░░ 80%                                     │
+│     SPECIALIZATION: Quality Assurance                                       │
+│     INFLUENCE RADIUS: 7.9 units                                            │
+│                                                                             │
+│  📚 DOCUMENTATION AGENT (21,4,5):                                            │
+│     POSITION: (X=21, Y=4, Z=5)                                              │
+│     SEMANTIC WEIGHT: 0.87                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: Knowledge Management                                     │
+│     INFLUENCE RADIUS: 8.3 units                                            │
+│                                                                             │
+│  🚀 CI/CD AGENT (0,0,10):                                                   │
+│     POSITION: (X=0, Y=0, Z=10)                                              │
+│     SEMANTIC WEIGHT: 0.86                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: Pipeline Management                                      │
+│     INFLUENCE RADIUS: 8.7 units                                            │
+│                                                                             │
+│  👨‍💻 DEVEX AGENT (6,0,10):                                                  │
+│     POSITION: (X=6, Y=0, Z=10)                                              │
+│     SEMANTIC WEIGHT: 0.85                                                   │
+│     CONNECTION STRENGTH: ███████░░░ 70%                                     │
+│     SPECIALIZATION: Developer Experience                                     │
+│     INFLUENCE RADIUS: 8.1 units                                            │
+│                                                                             │
+│  🔍 CODE REVIEW AGENT (12,0,10):                                             │
+│     POSITION: (X=12, Y=0, Z=10)                                             │
+│     SEMANTIC WEIGHT: 0.93                                                   │
+│     CONNECTION STRENGTH: █████████░ 90%                                     │
+│     SPECIALIZATION: Code Quality                                            │
+│     INFLUENCE RADIUS: 8.4 units                                            │
+│                                                                             │
+│  ⚖️ CONSTITUTIONAL AGENT (18,0,10):                                          │
+│     POSITION: (X=18, Y=0, Z=10)                                             │
+│     SEMANTIC WEIGHT: 0.96                                                   │
+│     CONNECTION STRENGTH: ██████████ 100%                                    │
+│     SPECIALIZATION: Compliance                                              │
+│     INFLUENCE RADIUS: 9.5 units                                            │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🌊 3D DYNAMIC INTERACTION PATTERNS
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🔄 TEMPORAL INTERACTION PATTERNS:                                          │
+│                                                                             │
+│  MORNING WORKFLOW (9 AM - 12 PM):                                           │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ACTIVITY: Development Focus                                           │    │
+│  │  PRIMARY PATH: General → Frontend → Backend → Fullstack               │    │
+│  │  SUPPORT PATH: Security → Performance → Testing                       │    │
+│  │  INTENSITY: ████████░░ 80%                                            │    │
+│  │  COORDINATION: High                                                   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  AFTERNOON WORKFLOW (1 PM - 5 PM):                                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ACTIVITY: Quality Assurance                                          │    │
+│  │  PRIMARY PATH: Security → Performance → Testing → Documentation       │    │
+│  │  SUPPORT PATH: Code Review → Constitutional                           │    │
+│  │  INTENSITY: ███████░░░ 70%                                            │    │
+│  │  COORDINATION: Medium                                                 │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  EVENING WORKFLOW (6 PM - 9 PM):                                            │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ACTIVITY: Operations & Deployment                                    │    │
+│  │  PRIMARY PATH: CI/CD → DevEx → Code Review → Constitutional           │    │
+│  │  SUPPORT PATH: Documentation → Testing                                 │    │
+│  │  INTENSITY: ██████░░░░ 60%                                             │    │
+│  │  COORDINATION: Low                                                    │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  🌊 LOAD BALANCING PATTERNS:                                               │
+│                                                                             │
+│  HIGH LOAD SCENARIOS:                                                      │
+│  • Agents with high semantic weight take priority                          │
+│  • Load distributed across Z-axis layers                                   │
+│  • Backup agents activated at Z+2 positions                                │
+│                                                                             │
+│  FAILOVER PATTERNS:                                                        │
+│  • Horizontal failover: Same Z-layer, adjacent X positions                 │
+│  • Vertical failover: Adjacent Z-layers, same X position                   │
+│  • Diagonal failover: Adjacent X and Z positions                           │
+│                                                                             │
+│  SCALING PATTERNS:                                                         │
+│  • X-axis scaling: Add agents horizontally                                 │
+│  • Y-axis scaling: Increase agent capabilities                              │
+│  • Z-axis scaling: Add depth layers for specialization                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 3D NAVIGATION & EXPLORATION
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  🗺️ INTERACTIVE 3D NAVIGATION:                                             │
+│                                                                             │
+│  VIEW CONTROLS:                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  ROTATION:                                                             │    │
+│  │  • X-axis: Tilt up/down (±45°)                                        │    │
+│  │  • Y-axis: Rotate left/right (360°)                                   │    │
+│  │  • Z-axis: Roll (±30°)                                                │    │
+│  │                                                                         │    │
+│  │  ZOOM:                                                                  │    │
+│  │  • Mouse wheel: Zoom in/out                                           │    │
+│  │  • Double-click: Focus on agent                                       │    │
+│  │  • Pinch gesture: Mobile zoom                                         │    │
+│  │                                                                         │    │
+│  │  PAN:                                                                   │    │
+│  │  • Click + drag: Move view                                            │    │
+│  │  • Arrow keys: Precise movement                                       │    │
+│  │  • WASD keys: Alternative navigation                                   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  LAYER TOGGLING:                                                           │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  VISIBILITY CONTROLS:                                                 │    │
+│  │  • L key: Toggle layer visibility                                     │    │
+│  │  • 1-3 keys: Show specific layers                                     │    │
+│  │  • A key: Show all layers                                             │    │
+│  │  • H key: Hide all layers                                             │    │
+│  │                                                                         │    │
+│  │  CONNECTION FILTERS:                                                   │    │
+│  │  • C key: Toggle connections                                          │    │
+│  │  • S key: Strong connections only                                     │    │
+│  │  • W key: Weak connections only                                       │    │
+│  │  • T key: Toggle connection types                                     │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  SEARCH & FILTER:                                                          │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  AGENT SEARCH:                                                         │    │
+│  │  • /agent [name]: Find specific agent                                 │    │
+│  │  • /type [specialization]: Filter by type                            │    │
+│  │  • /layer [z-position]: Filter by layer                              │    │
+│  │  • /cluster [name]: Find semantic cluster                            │    │
+│  │                                                                         │    │
+│  │  PATH FINDING:                                                         │    │
+│  │  • /path [from] [to]: Show shortest path                              │    │
+│  │  • /flow [workflow]: Show workflow path                              │    │
+│  │  • /nearest [agent]: Find closest agents                             │    │
+│  │  • /cluster [agent]: Show semantic cluster                           │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  ANALYSIS TOOLS:                                                           │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  SEMANTIC ANALYSIS:                                                     │    │
+│  │  • /analyze [agent]: Detailed agent analysis                          │    │
+│  │  • /compare [agent1] [agent2]: Compare agents                        │    │
+│  │  • /cluster [name]: Cluster analysis                                  │    │
+│  │  • /network: Overall network analysis                                │    │
+│  │                                                                         │    │
+│  │  PERFORMANCE METRICS:                                                   │    │
+│  │  • /metrics [agent]: Agent performance                                │    │
+│  │  • /connections [agent]: Connection analysis                         │    │
+│  │  │  /bottlenecks: Identify bottlenecks                               │    │
+│  │  • /optimization: Optimization suggestions                            │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 3D ANALYTICS DASHBOARD
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  📈 REAL-TIME 3D METRICS:                                                   │
+│                                                                             │
+│  NETWORK HEALTH:                                                            │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  OVERALL STATUS: 🟢 HEALTHY                                            │    │
+│  │  ACTIVE CONNECTIONS: 42/48 (87.5%)                                     │    │
+│  │  RESPONSE TIME: 1.2s average                                           │    │
+│  │  THROUGHPUT: 1,247 tasks/hour                                           │    │
+│  │  ERROR RATE: 0.3%                                                      │    │
+│  │                                                                         │    │
+│  │  LAYER PERFORMANCE:                                                     │    │
+│  │  Front Layer (Z=0-3):    ████████░░ 82%                                │    │
+│  │  Middle Layer (Z=4-7):   ███████░░░ 73%                                │    │
+│  │  Back Layer (Z=8-12):    ████████░░ 81%                                │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  AGENT PERFORMANCE:                                                         │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  TOP PERFORMERS:                                                       │    │
+│  │  1. Constitutional Agent: ██████████ 100%                             │    │
+│  │  2. Security Agent:       █████████░ 95%                              │    │
+│  │  3. Code Review Agent:    █████████░ 93%                              │    │
+│  │  4. General Agent:        ████████░░ 87%                              │    │
+│  │  5. Testing Agent:         ████████░░ 85%                              │    │
+│  │                                                                         │    │
+│  │  NEEDS ATTENTION:                                                     │    │
+│  │  1. Documentation Agent:  ██████░░░░ 64%                              │    │
+│  │  2. DevEx Agent:          ██████░░░░ 62%                              │    │
+│  │  3. CI/CD Agent:          ███████░░░ 71%                              │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+│  SEMANTIC CLUSTER HEALTH:                                                   │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │  DEVELOPMENT CLUSTER:     🟢 OPTIMAL                                   │    │
+│  │  • Cohesion: 0.95                                                       │    │
+│  │  • Communication: ████████░░ 84%                                       │    │
+│  │  • Performance: ████████░░ 88%                                         │    │
+│  │                                                                         │    │
+│  │  QUALITY CLUSTER:        🟡 GOOD                                       │    │
+│  │  • Cohesion: 0.88                                                       │    │
+│  │  • Communication: ███████░░░ 76%                                       │    │
+│  │  • Performance: ███████░░░ 73%                                         │    │
+│  │                                                                         │    │
+│  │  OPERATIONS CLUSTER:     🟢 OPTIMAL                                   │    │
+│  │  • Cohesion: 0.92                                                       │    │
+│  │  • Communication: ████████░░ 81%                                       │    │
+│  │  • Performance: ████████░░ 85%                                         │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 3D VISUALIZATION SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+This 3D semantic relationship graph provides:
+
+🌐 SPATIAL ORGANIZATION:
+• 3D coordinate system for precise agent positioning
+• Depth-based layering for functional organization
+• Semantic clustering for logical grouping
+
+🔗 DYNAMIC CONNECTIONS:
+• Multi-dimensional relationship mapping
+• Strength-based connection visualization
+• Real-time interaction flow tracking
+
+📊 ANALYTICAL INSIGHTS:
+• Semantic distance calculations
+• Performance metrics in 3D space
+• Cluster health monitoring
+
+🎮 INTERACTIVE EXPLORATION:
+• Full 3D navigation controls
+• Layer and connection filtering
+• Advanced search and pathfinding
+
+📈 REAL-TIME MONITORING:
+• Live performance dashboards
+• Network health indicators
+• Agent status tracking
+
+The 3D visualization transforms complex agent relationships into an
+intuitive, explorable space that reveals patterns, connections, and
+optimization opportunities across the entire agent ecosystem.

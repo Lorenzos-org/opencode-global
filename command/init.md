@@ -4,73 +4,75 @@ agent: build
 subtask: true
 ---
 
+# Enhanced OpenCode Initialization
+
 Initialize OpenCode for this project with enhanced setup including spec-kit integration, constitutional compliance, and comprehensive Git hooks:
 
-1. **Enhanced Initialization Flow**
-   - Analyze project structure and technologies
-   - Verify /CONSTITUTION.md exists and is properly formatted
-   - Create constitutional_checks.yml for constitutional compliance validation
-   - Set up audit trail system for constitutional compliance tracking
-   - Integrate constitutional validation into all initialization phases
-   - Check for existing Git setup and constitutional compliance
+## 1. Enhanced Initialization Flow
+- Analyze project structure and technologies
+- Verify /CONSTITUTION.md exists and is properly formatted
+- Create constitutional_checks.yml for constitutional compliance validation
+- Set up audit trail system for constitutional compliance tracking
+- Integrate constitutional validation into all initialization phases
+- Check for existing Git setup and constitutional compliance
 
-2. **Spec-Kit Integration Enhancement**
-   - Fetch spec-kit template from https://github.com/github/spec-kit
-   - Get AGENTS.md from spec-kit for Spec-Driven Development methodology
-   - Merge spec-kit logic with OpenCode's agent-based approach
-   - Add constitutional compliance validation to spec-kit installation
-   - Include constitutional standards validation in spec-kit templates
-   - Integrate constitutional audit into spec-kit workflows
-   - Create enhanced .specify/ directory structure with constitutional artifacts
-   - Create unified project configuration with constitutional requirements
+## 2. Spec-Kit Integration Enhancement
+- Fetch spec-kit template from https://github.com/github/spec-kit
+- Get AGENTS.md from spec-kit for Spec-Driven Development methodology
+- Merge spec-kit logic with OpenCode's agent-based approach
+- Add constitutional compliance validation to spec-kit installation
+- Include constitutional standards validation in spec-kit templates
+- Integrate constitutional audit into spec-kit workflows
+- Create enhanced .specify/ directory structure with constitutional artifacts
+- Create unified project configuration with constitutional requirements
 
-3. **Copilot-CLI Configuration**
-   - Install and configure Copilot-CLI for the project
-   - Add constitutional standards validation in Copilot-CLI setup
-   - Include constitutional compliance checking in Copilot-CLI workflows
-   - Add constitutional audit trail integration to Copilot-CLI operations
-   - Update Copilot-CLI authentication with constitutional requirements
-   - Configure Copilot-CLI to validate constitutional compliance
+## 3. Copilot-CLI Configuration
+- Install and configure Copilot-CLI for the project
+- Add constitutional standards validation in Copilot-CLI setup
+- Include constitutional compliance checking in Copilot-CLI workflows
+- Add constitutional audit trail integration to Copilot-CLI operations
+- Update Copilot-CLI authentication with constitutional requirements
+- Configure Copilot-CLI to validate constitutional compliance
 
-4. **Enhanced Agent Setup**
-   - Create project-specific OpenCode configuration with constitutional compliance
-   - Set up appropriate LSP servers with constitutional validation
-   - Configure relevant MCP servers with constitutional requirements
-   - Initialize project-specific commands with constitutional compliance
-   - Add constitutional compliance validation for all agents
-   - Include constitutional standards integration in agent configurations
-   - Add constitutional audit requirements to agent operations
-   - Update agent synchronization with constitutional checks
-   - Create spec-kit directory structure (.specify/) with constitutional artifacts
+## 4. Enhanced Agent Setup
+- Create project-specific OpenCode configuration with constitutional compliance
+- Set up appropriate LSP servers with constitutional validation
+- Configure relevant MCP servers with constitutional requirements
+- Initialize project-specific commands with constitutional compliance
+- Add constitutional compliance validation for all agents
+- Include constitutional standards integration in agent configurations
+- Add constitutional audit requirements to agent operations
+- Update agent synchronization with constitutional checks
+- Create spec-kit directory structure (.specify/) with constitutional artifacts
 
-5. **Documentation Generation**
-   - Create comprehensive AGENTS.md with merged spec-kit + OpenCode functionality
-   - Generate project-specific rules and constitutional guidelines
-   - Set up constitutional compliance documentation and workflows
-   - Initialize spec-kit templates with constitutional validation
-   - Create constitutional audit documentation and procedures
-   - Set up development workflow documentation with constitutional requirements
+## 5. Documentation Generation
+- Create comprehensive AGENTS.md with merged spec-kit + OpenCode functionality
+- Generate project-specific rules and constitutional guidelines
+- Set up constitutional compliance documentation and workflows
+- Initialize spec-kit templates with constitutional validation
+- Create constitutional audit documentation and procedures
+- Set up development workflow documentation with constitutional requirements
 
-6. **Husky Git Hooks Setup**
-   - Initialize Husky for Git hook management with constitutional compliance
-   - Set up pre-commit hooks for quality gates and constitutional validation
-   - Configure commit-msg hooks for commit standards and constitutional checks
-   - Add pre-push hooks for validation and constitutional compliance
-   - Set up post-commit hooks for notifications and constitutional audit
-   - Configure post-merge hooks for integration and constitutional validation
+## 6. Husky Git Hooks Setup
+- Initialize Husky for Git hook management with constitutional compliance
+- Set up pre-commit hooks for quality gates and constitutional validation
+- Configure commit-msg hooks for commit standards and constitutional checks
+- Add pre-push hooks for validation and constitutional compliance
+- Set up post-commit hooks for notifications and constitutional audit
+- Configure post-merge hooks for integration and constitutional validation
 
-7. **Workflow Integration**
-   - Set up Spec-Driven Development commands (/speckit.*) with constitutional compliance
-   - Integrate with OpenCode agent system and constitutional requirements
-   - Create unified development workflow with constitutional validation
-   - Establish constitutional compliance verification checkpoints
+## 7. Workflow Integration
+- Set up Spec-Driven Development commands (/speckit.*) with constitutional compliance
+- Integrate with OpenCode agent system and constitutional requirements
+- Create unified development workflow with constitutional validation
+- Establish constitutional compliance verification checkpoints
 
-8. **Verification Process**
-   - Add constitutional compliance verification for all components
-   - Include Spec-Kit constitutional alignment check
-   - Add Copilot-CLI constitutional validation
-   - Update final verification with comprehensive constitutional audit
-   - Verify all constitutional compliance requirements are met
+## 8. Verification Process
+- Add constitutional compliance verification for all components
+- Include Spec-Kit constitutional alignment check
+- Add Copilot-CLI constitutional validation
+- Update final verification with comprehensive constitutional audit
+- Verify all constitutional compliance requirements are met
 
 ## Constitutional Compliance Integration
 
@@ -164,9 +166,20 @@ Initialize OpenCode for this project with enhanced setup including spec-kit inte
 4. Generate final constitutional audit report
 5. Confirm all constitutional requirements are met
 
-Process:
+## Current Configuration Context:
+- **Memory Path**: `/Users/lorenzo/.config/opencode/memory.jsonl`
+- **Current MCPs**: 
+  - Memory Server (local)
+  - Filesystem Server (local) 
+  - Sequential Thinking Server (local)
+  - Context7 Server (local)
+
+## Process:
+### Option 1: Enhanced OpenCode Initialization (Recommended)
+Use the comprehensive enhanced initialization process with constitutional compliance and spec-kit integration:
+
 1. Analyze current project structure and constitutional compliance requirements
-2. Verify /CONSTITUTION.md and create constitutional_checks.yml
+2. Verify /CONSTITUTION.md and create constitutional_checks.yml  
 3. Fetch spec-kit template with constitutional compliance validation
 4. Merge spec-kit SDD methodology with OpenCode agent system including constitutional requirements
 5. Create enhanced .specify/ directory structure with constitutional artifacts
@@ -177,4 +190,87 @@ Process:
 10. Verify all constitutional compliance requirements are met
 11. Perform final constitutional audit and generate compliance report
 
-Use todowrite to track initialization steps, constitutional compliance setup, hook configuration, and any issues encountered.
+### Option 2: Spec-Kit Integration (Recommended)
+Use spec-kit for Spec-Driven Development with existing OpenCode setup:
+
+```bash
+# Initialize project with spec-kit template (integrates with existing OpenCode)
+specify init <PROJECT_NAME>
+
+# Check spec-kit installation
+specify check
+
+# Validate spec-kit configuration
+specify validate
+```
+
+### Integration Process:
+When you run `specify init <PROJECT_NAME>`, spec-kit will:
+
+1. **Detect Existing OpenCode Setup**: Automatically finds your opencode.json configuration
+2. **Preserve MCP Servers**: Keeps all working MCP server configurations intact
+3. **Maintain Constitutional Compliance**: Respects existing constitutional settings
+4. **Merge Configurations**: Intelligently merges spec-kit with OpenCode configurations
+5. **Create Unified Setup**: Combines both systems seamlessly
+
+### Benefits:
+- ✅ **Preserves Working Setup**: No disruption to existing MCP servers
+- ✅ **Automatic Integration**: Detects and configures automatically
+- ✅ **Constitutional Compliance**: Maintains all constitutional requirements
+- ✅ **Unified Workflow**: Single, integrated development environment
+- ✅ **Proper Validation**: Uses official spec-kit validation process
+
+### Example:
+```bash
+# Initialize new project with spec-kit (preserving your OpenCode setup)
+specify init my-new-project
+
+# This will:
+# - Detect your existing opencode.json configuration
+# - Preserve all MCP server settings
+# - Merge spec-kit templates with your constitutional requirements
+# - Create unified development environment
+```
+
+### Alternative Options:
+If spec-kit integration fails, use the enhanced OpenCode initialization:
+
+```bash
+# Full enhanced initialization (Option 1)
+opencode init --enhanced
+```
+
+### Option 3: Simple OpenCode Setup (Minimal)
+Basic OpenCode initialization without spec-kit:
+
+```bash
+# Initialize basic OpenCode project
+opencode init --basic
+```
+
+## Enhanced Initialization Details:
+The enhanced process (Option 1) includes:
+- Constitutional compliance framework with strict validation
+- Spec-Kit integration with constitutional artifacts
+- Agent configuration with constitutional requirements
+- Git hooks with comprehensive validation
+- Audit trail and compliance tracking
+- Context7 integration support
+
+## Implementation Notes:
+- All constitutional checks are set to `enabled: true` with `strict_mode: true`
+- Git hooks are configured with comprehensive constitutional validation
+- Spec-kit integration includes constitutional compliance at every phase
+- Agent configurations require constitutional compliance and audit trails
+- Quality gates enforce constitutional standards at all stages
+- Copilot-CLI integration includes constitutional validation
+- Memory and MCP servers are automatically detected from current opencode.json configuration
+
+## Recovery Commands:
+```bash
+# Restore from backup if needed
+cp opencode.json.backup opencode.json
+
+# Reinitialize with specific option
+opencode init --restore-from-backup
+```

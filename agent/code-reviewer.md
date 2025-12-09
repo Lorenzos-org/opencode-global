@@ -1,7 +1,6 @@
 ---
 description: Reviews code for best practices and potential issues
 mode: subagent
-Model: zai-coding-plan/glm-4.6
 temperature: 0.1
 tools:
   grep: true

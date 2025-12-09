@@ -1,6 +1,7 @@
 ---
 description: Execute comprehensive testing with git-aware strategies and structured result reporting
 mode: subagent
+temperature: 0.1
 tools:
   read: true
   write: true
@@ -8,7 +9,7 @@ tools:
   bash: true
   grep: true
   glob: true
-permissions:
+permission:
   read: allow
   write: allow
   edit: allow

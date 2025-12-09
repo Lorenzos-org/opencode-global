@@ -10,11 +10,11 @@
    glob: true
    webfetch: true
    task: true
- permissions:
-   read: allow
-   write: deny
-   edit: deny
-   bash: deny
+ permission:
+    read: allow
+    write: deny
+    edit: deny
+    bash: deny
 ---
 
 # 🔍 @review Agent - Quality Assurance & Analysis

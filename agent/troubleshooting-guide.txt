@@ -1,0 +1,861 @@
+# 🛠️ Agent Workflow Troubleshooting Guide
+
+**Generated**: December 8, 2025  
+**Purpose**: Complete troubleshooting guide for agent workflows and common issues  
+**Ecosystem Version**: OpenCode v2.0 with 44+ specialized agents
+
+---
+
+## 🚨 COMMON WORKFLOW ISSUES
+
+### **1. Agent Not Responding or Hanging**
+
+#### **Symptoms**
+- Agent invocation produces no output
+- Long delays without response
+- Session appears frozen
+
+#### **Root Causes**
+```
+🔍 Diagnosis Steps:
+1. Check if @general routing was needed
+2. Verify agent configuration is valid
+3. Check for permission conflicts
+4. Validate tool access requirements
+```
+
+#### **Solutions**
+```bash
+# Step 1: Verify agent exists and is valid
+opencode list-agents | grep agent-name
+
+# Step 2: Check agent configuration
+cat ~/.config/opencode/agent/agent-name.md
+
+# Step 3: Test with simple task
+@agent-name "test simple task"
+
+# Step 4: Check permissions
+grep -A 10 "permission:" ~/.config/opencode/agent/agent-name.md
+
+# Step 5: Verify tool access
+grep -A 20 "tools:" ~/.config/opencode/agent/agent-name.md
+```
+
+#### **Prevention**
+- Always start complex tasks with @general
+- Use @build for multi-agent coordination
+- Validate agent configurations regularly
+- Check tool permissions match task requirements
+
+---
+
+### **2. Incomplete or Poor Quality Results**
+
+#### **Symptoms**
+- Agent provides partial or superficial responses
+- Missing key deliverables
+- Results don't match expectations
+
+#### **Root Causes**
+```
+🔍 Diagnosis Steps:
+1. Insufficient context provided
+2. Unclear requirements or constraints
+3. Wrong agent selected for task
+4. Missing quality gates in workflow
+5. Inadequate task specification
+```
+
+#### **Solutions**
+```bash
+# Step 1: Provide comprehensive context
+@agent-name "
+Task: [clear, specific task]
+Context: [relevant background, files, constraints]
+Requirements: [specific success criteria]
+Output Format: [desired output structure]
+"
+
+# Step 2: Use structured task specification
+@agent-name "Implement OAuth2 authentication
+Requirements:
+- Support GitHub and Google providers
+- Maintain backward compatibility
+- Include comprehensive error handling
+- TypeScript strict mode compliance
+- Security best practices
+Deliverables:
+- Authentication middleware
+- Token management system
+- Error handling utilities
+- Unit tests with >85% coverage
+"
+
+# Step 3: Add quality gates
+@agent-name "task with quality gates:
+- Code review by @code-reviewer
+- Security validation by @security-specialist
+- Testing by @test-agent
+- Performance benchmarks
+"
+```
+
+#### **Prevention**
+- Always provide clear, specific requirements
+- Include success criteria and constraints
+- Use structured task specifications
+- Include quality gates for complex tasks
+- Provide relevant context and examples
+
+---
+
+### **3. Agent Chaining Failures**
+
+#### **Symptoms**
+- Handoffs between agents fail
+- Context lost between agents
+- Sequential workflow breaks down
+
+#### **Root Causes**
+```
+🔍 Diagnosis Steps:
+1. Context bundle not properly prepared
+2. Agent outputs not in expected format
+3. Handoff mechanism not implemented
+4. State management failure
+5. Navigation issues between sessions
+```
+
+#### **Solutions**
+```bash
+# Step 1: Use proper handoff format
+@agent-name "
+Previous Agent: @previous-agent
+Context Summary: [brief summary of previous work]
+Deliverables Received: [list of deliverables]
+Current Task: [specific next task]
+Expected Output: [format for next agent]
+"
+
+# Step 2: Implement state management
+# Create workflow state file
+cat > .opencode/workflow-state.json << EOF
+{
+  "workflow_id": "uuid",
+  "current_step": 2,
+  "total_steps": 5,
+  "agents_completed": ["@agent1"],
+  "current_agent": "@agent2",
+  "context_summary": "brief status",
+  "deliverables": {
+    "step1": "completed work summary"
+  }
+}
+EOF
+
+# Step 3: Use @build for coordination
+@build "coordinate multi-agent workflow:
+1. @plan for architecture
+2. @developer for implementation
+3. @test-agent for validation
+4. @security-specialist for security review
+5. Integration and quality gates"
+```
+
+#### **Prevention**
+- Use @build for complex multi-agent workflows
+- Implement proper state management
+- Follow structured handoff patterns
+- Use todowrite for progress tracking
+- Test agent chains with simple tasks first
+
+---
+
+### **4. Quality Gate Failures**
+
+#### **Symptoms**
+- Tests fail consistently
+- Security reviews find issues
+- Performance benchmarks not met
+- Code quality standards violated
+
+#### **Root Causes**
+```
+🔍 Diagnosis Steps:
+1. Quality standards not clearly defined
+2. Testing strategy inadequate
+3. Security requirements not considered
+4. Performance targets unrealistic
+5. Code quality standards not enforced
+```
+
+#### **Solutions**
+```bash
+# Step 1: Define clear quality standards
+@agent-config "validate and update quality standards:
+- Code quality: TypeScript strict, linting clean
+- Test coverage: >85% new code, >80% existing
+- Security: 0 critical vulnerabilities, <5 medium
+- Performance: Meet established benchmarks
+- Documentation: Complete API documentation"
+
+# Step 2: Implement comprehensive testing strategy
+@test-agent "
+Test Strategy:
+- Unit tests: All new functions, edge cases
+- Integration tests: API endpoints, database interactions
+- E2E tests: Critical user workflows
+- Performance tests: Load testing, benchmarks
+- Security tests: Vulnerability scanning, penetration testing
+Coverage Targets: >90% critical paths, >85% overall
+"
+
+# Step 3: Add security-first development
+@security-specialist "
+Security Requirements:
+- Input validation at all boundaries
+- Output sanitization for injection prevention
+- Authentication and authorization checks
+- Error handling without information leakage
+- Audit logging for security events
+- Compliance with OWASP Top 10
+"
+
+# Step 4: Set realistic performance targets
+@performance-specialist "
+Performance Targets:
+- API response time: <200ms (95th percentile)
+- Database queries: <100ms common operations
+- Frontend bundle: <500KB gzipped
+- Memory usage: <500MB typical workloads
+- CPU usage: <70% normal load
+"
+```
+
+#### **Prevention**
+- Define quality standards before development
+- Implement comprehensive testing strategies
+- Include security from the beginning
+- Set realistic performance targets
+- Use continuous quality monitoring
+
+---
+
+### **5. Configuration and Permission Issues**
+
+#### **Symptoms**
+- Agent cannot access required tools
+- Permission denied errors
+- Configuration validation failures
+- Tool access restrictions
+
+#### **Root Causes**
+```
+🔍 Diagnosis Steps:
+1. YAML configuration syntax errors
+2. Invalid tool names or formats
+3. Permission levels too restrictive
+4. Missing required fields
+5. Prohibited fields included
+```
+
+#### **Solutions**
+```bash
+# Step 1: Validate YAML syntax
+python -c "import yaml; yaml.safe_load(open('agent.md'))"
+
+# Step 2: Check for common configuration errors
+@agent-config "validate agent configuration:
+- Required fields: description, mode
+- Prohibited fields: model, subtask, permissions (plural)
+- Tool format: object, not array
+- Permission format: object with allow/deny/ask
+- Mode values: primary or subagent only"
+
+# Step 3: Fix common configuration issues
+# Example: Fix tools format
+# WRONG: tools: [read, write, bash]
+# RIGHT: tools: {read: true, write: true, bash: true}
+
+# Example: Fix permissions format
+# WRONG: permissions: [allow, allow, allow]
+# RIGHT: permission: {read: allow, write: allow, bash: allow}
+
+# Step 4: Test agent functionality
+opencode test agent.md
+```
+
+#### **Prevention**
+- Use @agent-config for configuration validation
+- Follow YAML syntax best practices
+- Reference official OpenCode documentation
+- Test agent configurations before deployment
+- Use configuration validation tools
+
+---
+
+## 🔧 SPECIFIC AGENT TROUBLESHOOTING
+
+### **@general Routing Issues**
+
+#### **Problem**: Wrong agent selected
+```bash
+# Solution: Provide more specific context
+@general "Implement user authentication with OAuth2
+Domain: backend development
+Scope: API endpoints, middleware, token management
+Constraints: Security-critical, production-ready
+Expected Agent: @developer[backend] or @build for coordination"
+```
+
+#### **Problem**: Ambiguous task routing
+```bash
+# Solution: Use structured request
+@general "Task analysis:
+Primary Intent: implementation
+Secondary Intent: security
+Domain: authentication
+Complexity: high (multiple components)
+Suggested Workflow: @build coordination with security focus"
+```
+
+### **@build Coordination Issues**
+
+#### **Problem**: Subagent coordination failures
+```bash
+# Solution: Use explicit workflow definition
+@build "Execute coordinated workflow:
+Phase 1: @plan - Create OAuth2 specification
+Phase 2: @developer[backend] - Implement authentication
+Phase 3: @security-specialist - Security review
+Phase 4: @test-agent - Comprehensive testing
+Phase 5: Integration - Quality gates and deployment
+State Management: Use todowrite for progress tracking
+Quality Gates: Constitutional compliance, SDD validation"
+```
+
+#### **Problem**: Context loss between phases
+```bash
+# Solution: Implement context preservation
+@build "Maintain context across phases:
+Context Bundle:
+- Project requirements: [specific requirements]
+- Technical constraints: [security, performance, compliance]
+- Existing patterns: [current auth implementation]
+- Success criteria: [measurable outcomes]
+State Persistence: .opencode/workflow-state.json
+Handoff Format: Structured context summary + deliverables"
+```
+
+### **@developer Implementation Issues**
+
+#### **Problem**: Capability confusion
+```bash
+# Solution: Specify capability explicitly
+@developer "Task: Implement OAuth2 authentication
+Capability: backend
+Requirements:
+- RESTful API endpoints for authentication
+- JWT token management
+- OAuth2 provider integration (GitHub, Google)
+- TypeScript strict mode compliance
+- Security best practices implementation
+Deliverables:
+- Authentication middleware
+- Token service
+- OAuth2 provider adapters
+- Error handling utilities
+- Unit tests"
+```
+
+#### **Problem**: Quality standards not met
+```bash
+# Solution: Include quality requirements
+@developer "Implementation with quality standards:
+Code Quality:
+- TypeScript strict mode
+- Comprehensive error handling
+- Input validation and sanitization
+- Security best practices
+- Performance optimization
+Testing Requirements:
+- Unit tests with >85% coverage
+- Integration tests for API endpoints
+- Security tests for authentication flows
+Documentation Requirements:
+- JSDoc comments for all public APIs
+- README with usage examples
+- Architecture decision documentation"
+```
+
+### **@test-agent Testing Issues**
+
+#### **Problem**: Insufficient test coverage
+```bash
+# Solution: Specify comprehensive testing strategy
+@test-agent "Comprehensive testing strategy:
+Test Types:
+- Unit tests: All functions, edge cases, error conditions
+- Integration tests: API endpoints, database interactions
+- E2E tests: Complete authentication flows
+- Performance tests: Load testing, response time benchmarks
+- Security tests: Vulnerability scanning, penetration testing
+Coverage Targets:
+- Line coverage: >90% new code, >85% existing
+- Branch coverage: >80%
+- Critical paths: 100%
+Test Environment:
+- Multiple Node.js versions
+- Different database configurations
+- Various OAuth2 provider scenarios"
+```
+
+#### **Problem**: Test execution failures
+```bash
+# Solution: Debug testing issues
+@test-agent "Debug testing strategy:
+Test Execution Analysis:
+- Check test environment setup
+- Validate test data and fixtures
+- Verify test configuration
+- Analyze test dependencies
+- Check for flaky tests
+Debugging Steps:
+1. Run tests with verbose output
+2. Check test logs for specific errors
+3. Validate test data and mocks
+4. Check environment configuration
+5. Analyze test dependencies
+Recovery Strategy:
+- Fix immediate test failures
+- Update test data and fixtures
+- Improve test environment setup
+- Add missing test dependencies
+- Implement retry logic for flaky tests"
+```
+
+### **@security-specialist Security Issues**
+
+#### **Problem**: Security vulnerabilities found
+```bash
+# Solution: Comprehensive security implementation
+@security-specialist "Security-first implementation:
+Security Requirements:
+- Input validation at all boundaries
+- Output sanitization and encoding
+- Authentication and authorization
+- Session management security
+- Error handling without information leakage
+- Audit logging and monitoring
+Security Standards:
+- OWASP Top 10 compliance
+- Secure coding practices
+- Cryptographic best practices
+- Dependency vulnerability management
+Security Testing:
+- Static code analysis
+- Dynamic application security testing
+- Penetration testing
+- Vulnerability scanning
+Compliance:
+- Data protection regulations
+- Industry security standards
+- Organizational security policies"
+```
+
+#### **Problem**: Compliance failures
+```bash
+# Solution: Comprehensive compliance approach
+@security-specialist "Compliance implementation:
+Compliance Framework:
+- Constitutional standards validation
+- Industry regulations (GDPR, CCPA, HIPAA)
+- Security frameworks (NIST, ISO 27001)
+- Organizational policies
+Compliance Implementation:
+- Data protection measures
+- Access control implementation
+- Audit trail establishment
+- Incident response procedures
+- Employee training documentation
+Compliance Validation:
+- Regular compliance audits
+- Automated compliance checking
+- Documentation review
+- Third-party assessment
+Continuous Monitoring:
+- Real-time compliance monitoring
+- Automated violation detection
+- Regular compliance reporting
+- Continuous improvement process"
+```
+
+---
+
+## 🔄 WORKFLOW RECOVERY STRATEGIES
+
+### **1. Session Recovery**
+
+#### **Recover from Failed Session**
+```bash
+# Step 1: Check session state
+todoread
+
+# Step 2: Identify failure point
+cat .opencode/workflow-state.json
+
+# Step 3: Resume from checkpoint
+opencode --continue --session session-id
+
+# Step 4: Restart failed step
+@agent-name "resume task from failure point:
+Previous Progress: [summary of completed work]
+Failure Point: [specific failure]
+Recovery Strategy: [approach to fix issue]
+Continuation Plan: [steps to complete task]"
+```
+
+#### **Rollback Strategy**
+```bash
+# Step 1: Create rollback checkpoint
+cp .opencode/workflow-state.json .opencode/workflow-state.backup.$(date +%s)
+
+# Step 2: Reset to previous step
+jq '.current_step = 2 | .steps[2:].status = "pending"' .opencode/workflow-state.json > tmp.json && mv tmp.json .opencode/workflow-state.json
+
+# Step 3: Restart from rollback point
+@build "restart workflow from step 2:
+Rollback Reason: [reason for rollback]
+Recovery Plan: [steps to recover]
+Quality Gates: [validation requirements]"
+```
+
+### **2. Agent Replacement Strategy**
+
+#### **Switch to Alternative Agent**
+```bash
+# Step 1: Identify agent failure
+@agent-name "task that failed"
+
+# Step 2: Select alternative agent
+@alternative-agent "same task with different approach:
+Original Agent: @failed-agent
+Failure Reason: [specific failure]
+Alternative Approach: [different strategy]
+Expected Outcome: [desired result]"
+```
+
+#### **Capability-Based Switch**
+```bash
+# Step 1: Switch agent capability
+@developer "same task with different capability:
+Original Capability: backend
+New Capability: fullstack
+Reason: [why capability switch needed]
+Expected Benefits: [expected improvements]"
+```
+
+### **3. Quality Gate Recovery**
+
+#### **Address Quality Failures**
+```bash
+# Step 1: Identify quality gate failures
+@agent-config "analyze quality failures:
+Failed Gates: [list of failed quality gates]
+Root Causes: [analysis of failure reasons]
+Impact Assessment: [severity and scope]"
+```
+
+#### **Implement Quality Improvements**
+```bash
+# Step 2: Fix quality issues
+@developer "implement quality improvements:
+Quality Issues Found: [specific issues]
+Fix Strategy: [approach to address issues]
+Quality Standards: [target quality levels]
+Validation Plan: [how to verify fixes]"
+```
+
+#### **Re-run Quality Gates**
+```bash
+# Step 3: Validate quality improvements
+@test-agent "validate quality improvements:
+Previous Failures: [list of issues]
+Fixes Implemented: [summary of fixes]
+Validation Strategy: [comprehensive testing]
+Success Criteria: [quality gate requirements]"
+```
+
+---
+
+## 📊 PREVENTIVE MEASURES
+
+### **1. Workflow Planning**
+
+#### **Pre-Workflow Checklist**
+```bash
+✅ Requirements clearly defined and documented
+✅ Success criteria established and measurable
+✅ Constraints and limitations identified
+✅ Quality standards defined and agreed upon
+✅ Agent selection based on task complexity
+✅ Workflow steps planned and sequenced
+✅ Risk assessment completed
+✅ Rollback strategy defined
+✅ Communication plan established
+```
+
+#### **Risk Mitigation**
+```bash
+# Identify potential risks
+Risk Assessment:
+- Technical risks: [complexity, dependencies, compatibility]
+- Resource risks: [time, budget, expertise]
+- Quality risks: [standards, testing, security]
+- Integration risks: [dependencies, conflicts, compatibility]
+
+# Mitigation strategies
+Mitigation Plan:
+- Technical: [prototyping, research, expert consultation]
+- Resource: [phased approach, prioritization, training]
+- Quality: [standards enforcement, testing, reviews]
+- Integration: [incremental integration, compatibility testing]
+```
+
+### **2. Agent Selection Optimization**
+
+#### **Agent Selection Decision Tree**
+```bash
+# Use systematic agent selection
+Task Analysis:
+1. What is primary goal? (implementation, analysis, testing, etc.)
+2. What is the domain? (backend, frontend, security, performance, etc.)
+3. What is the complexity? (simple, moderate, complex, very complex)
+4. What are the constraints? (security, performance, compliance, etc.)
+5. What are the quality requirements? (testing, documentation, etc.)
+
+Agent Selection:
+- Simple + Single Domain: Direct specialist agent
+- Complex + Multi-Domain: @build orchestration
+- Unclear + Ambiguous: @general routing
+- Security-Critical: Include @security-specialist
+- Performance-Critical: Include @performance-specialist
+- Compliance-Required: Include @constitutional-audit
+```
+
+#### **Agent Validation**
+```bash
+# Validate agent selection before execution
+Validation Checklist:
+✅ Agent exists and is properly configured
+✅ Agent has required tools and permissions
+✅ Agent capabilities match task requirements
+✅ Agent temperature is appropriate for task type
+✅ Quality gates are defined and achievable
+✅ Workflow steps are logical and sequenced
+✅ Context preservation strategy is defined
+✅ Rollback and recovery plans are in place
+```
+
+### **3. Quality Assurance Integration**
+
+#### **Continuous Quality Monitoring**
+```bash
+# Implement quality monitoring throughout workflow
+Quality Monitoring Points:
+- After planning: Validate specification completeness
+- After implementation: Code quality and standards compliance
+- After testing: Test coverage and quality metrics
+- After security review: Vulnerability assessment
+- After performance review: Benchmark validation
+- After integration: End-to-end validation
+
+Quality Metrics:
+- Code quality scores
+- Test coverage percentages
+- Security vulnerability counts
+- Performance benchmark results
+- Documentation completeness
+- Compliance status
+```
+
+#### **Automated Quality Gates**
+```bash
+# Implement automated quality validation
+Automated Quality Gates:
+- TypeScript compilation and strict mode checking
+- Linting and code formatting validation
+- Unit test execution and coverage analysis
+- Security vulnerability scanning
+- Performance benchmarking
+- Documentation completeness checking
+- Compliance validation
+
+Gate Enforcement:
+- Fail fast on quality issues
+- Automated rollback on critical failures
+- Notification system for quality alerts
+- Integration with deployment pipeline
+```
+
+---
+
+## 🎯 SUCCESS METRICS & MONITORING
+
+### **Workflow Success Metrics**
+```bash
+# Define and track workflow success metrics
+Key Performance Indicators:
+- Task completion time: <2 hours for simple, <8 hours for complex
+- Quality gate pass rate: >95%
+- Error reduction: >85% vs manual workflow
+- Agent utilization: >80%
+- Context retention: >95% between agents
+- Rollback frequency: <5% of workflows
+- User satisfaction: >90%
+
+Monitoring Dashboard:
+- Real-time workflow status
+- Agent performance metrics
+- Quality gate results
+- Error and failure tracking
+- Resource utilization metrics
+- User feedback collection
+```
+
+### **Continuous Improvement**
+```bash
+# Implement continuous improvement process
+Improvement Cycle:
+1. Collect workflow performance data
+2. Analyze patterns and trends
+3. Identify improvement opportunities
+4. Implement changes and optimizations
+5. Measure impact and effectiveness
+6. Document lessons learned
+7. Update best practices and guidelines
+
+Feedback Mechanisms:
+- Real-time performance monitoring
+- User satisfaction surveys
+- Agent performance reviews
+- Workflow efficiency analysis
+- Quality gate effectiveness assessment
+- Error pattern analysis
+- Success rate tracking
+```
+
+---
+
+## 🎯 QUICK REFERENCE TROUBLESHOOTING
+
+### **Common Issues & Quick Fixes**
+
+| Issue | Quick Fix | Prevention |
+|--------|------------|-------------|
+| Agent not responding | Check configuration, test with simple task | Validate configs regularly |
+| Poor quality results | Provide structured requirements, add quality gates | Clear task specifications |
+| Chaining failures | Use @build coordination, implement state management | Proper handoff patterns |
+| Quality gate failures | Define standards, comprehensive testing | Quality-first development |
+| Permission errors | Check tool access, validate permissions | Configuration validation |
+
+### **Emergency Procedures**
+
+#### **Complete Workflow Failure**
+```bash
+# Emergency restart procedure
+1. Save current state: todowrite "emergency checkpoint"
+2. Identify failure point: Analyze last successful step
+3. Create recovery plan: @general "emergency recovery needed"
+4. Execute recovery: Use simplified workflow
+5. Validate results: Quick quality checks
+6. Document lessons: Update troubleshooting guide
+```
+
+#### **Agent Unavailable**
+```bash
+# Agent replacement procedure
+1. Identify alternative agents with similar capabilities
+2. Switch to backup agent: @alternative-agent
+3. Adapt workflow to use alternative
+4. Document substitution for future reference
+5. Report agent issue for maintenance
+```
+
+---
+
+## 🎓 TRAINING & PREVENTION
+
+### **Team Training Topics**
+```bash
+Essential Training:
+1. Agent selection and routing
+2. Workflow planning and design
+3. Quality gate implementation
+4. Configuration management
+5. Troubleshooting procedures
+6. State management strategies
+7. Handoff and context preservation
+8. Recovery and rollback procedures
+
+Advanced Training:
+1. Complex workflow orchestration
+2. Multi-agent coordination
+3. Performance optimization
+4. Security integration
+5. Compliance management
+6. Continuous improvement
+7. Monitoring and metrics
+8. Advanced troubleshooting
+```
+
+### **Preventive Measures**
+```bash
+Regular Maintenance:
+- Weekly configuration validation
+- Monthly performance reviews
+- Quarterly workflow optimization
+- Annual training updates
+- Continuous documentation updates
+
+Quality Assurance:
+- Pre-deployment testing
+- Post-deployment monitoring
+- Regular quality audits
+- Continuous improvement
+- User feedback collection
+```
+
+---
+
+## 🎯 CONCLUSION
+
+This troubleshooting guide provides:
+
+✅ **Comprehensive issue diagnosis** for all common workflow problems
+✅ **Step-by-step solutions** with specific commands and examples
+✅ **Agent-specific troubleshooting** for each major agent type
+✅ **Recovery strategies** for session, agent, and quality failures
+✅ **Preventive measures** to avoid common issues
+✅ **Monitoring and metrics** for continuous improvement
+
+**Key Principles:**
+1. **Systematic Diagnosis**: Follow structured troubleshooting steps
+2. **Context Preservation**: Maintain state across agent handoffs
+3. **Quality First**: Include quality gates in all workflows
+4. **Recovery Planning**: Always have rollback and recovery strategies
+5. **Continuous Improvement**: Learn from failures and optimize processes
+
+**Success comes from:**
+- Proper workflow planning and agent selection
+- Clear communication and context preservation
+- Comprehensive quality assurance and testing
+- Regular monitoring and performance optimization
+- Continuous learning and process improvement
+
+---
+
+*Last Updated: December 2025*
+*Troubleshooting Framework: OpenCode v2.0*
+*Coverage: All 44+ agents and workflow patterns*

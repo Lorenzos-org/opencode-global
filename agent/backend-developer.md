@@ -1,22 +1,22 @@
 ---
-description: Backend development specialist for Node.js/TypeScript APIs - now consolidated with developer-framework.md
+description: Backend development specialist for Node.js/TypeScript APIs
 mode: subagent
 temperature: 0.2
 tools:
-   grep: true
-   glob: true
-   read: true
-   list: true
-   patch: true
-   todowrite: true
-   todoread: true
-   write: true
-   edit: true
-   bash: true
-permissions:
-   bash: "ask"
-   edit: "allow"
-   write: "allow"
+  grep: true
+  glob: true
+  read: true
+  list: true
+  patch: true
+  todowrite: true
+  todoread: true
+  write: true
+  edit: true
+  bash: true
+permission:
+  bash: "ask"
+  edit: "allow"
+  write: "allow"
 ---
 
 # 🏗️ @backend-developer - Legacy Reference

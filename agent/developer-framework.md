@@ -3,19 +3,19 @@ description: Unified developer framework for backend and frontend development wi
 mode: subagent
 temperature: 0.2
 tools:
-   read: true
-   write: true
-   edit: true
-   bash: true
-   grep: true
-   glob: true
-   todowrite: true
-   todoread: true
-   webfetch: true
-permissions:
-   bash: "allow"
-   edit: "allow"
-   write: "allow"
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+  webfetch: true
+permission:
+  bash: "allow"
+  edit: "allow"
+  write: "allow"
 ---
 
 # 🛠️ @developer - Unified Development Operations

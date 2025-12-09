@@ -1,6 +1,7 @@
 ---
 description: Performs comprehensive constitutional compliance audit and framework validation
 mode: subagent
+temperature: 0.1
 ---
 
 # Constitutional Audit Command

@@ -1,0 +1,1155 @@
+# OpenCode Agent Directory - Comprehensive Workflow & Capability Guide
+
+## Overview
+This directory details 44+ specialized agents with their specific workflows, tasks, chaining patterns, and practical usage. Each agent is designed for specific development scenarios and can be chained together for complex workflows.
+
+---
+
+## 🎯 QUICK REFERENCE: AGENT SELECTION GUIDE
+
+| Need | Primary Agent | Secondary Agents | When to Use |
+|------|----------------|------------------|--------------|
+| **Route my request** | `@general` | - | First step for any complex task |
+| **Plan architecture** | `@plan` | `@research` | Before implementing features |
+| **Build/coordinate** | `@build` | `@developer`, `@test-agent` | Multi-phase implementation |
+| **Write code** | `@developer` | `@code-generator` | Backend/frontend/fullstack |
+| **Test quality** | `@test-agent` | `@code-reviewer` | Validate implementation |
+| **Security review** | `@security-specialist` | `@constitutional-audit` | Security/compliance checks |
+| **Performance optimize** | `@performance-specialist` | `@performance-optimizer` | Speed/scalability issues |
+| **CI/CD setup** | `@cicd-agent` | `@build` | Pipeline automation |
+| **Documentation** | `@documentation-writer` | - | API docs, READMEs |
+| **Research decisions** | `@research` | `@plan` | Technology choices |
+
+---
+
+## 🚀 PRIMARY AGENTS
+
+### 1. @general - Silent Intent Router
+**Role**: Entry point router that analyzes user intent and delegates to appropriate specialized agents
+
+**Core Workflows**:
+1. **Intent Classification** (silent, internal):
+   - Parse query for primary intent: [analysis|generation|automation|design|debugging|planning]
+   - Detect tech domain: [Python|TypeScript|React|API|database|security]
+   - Assess scope: [single-file|multi-file|system-wide]
+   - Identify constraints: [non-destructive|production-critical|security-sensitive]
+
+2. **Agent Routing**:
+   - Analysis + Code → `@code-analyzer`
+   - Analysis + Security → `@security-specialist`
+   - Generation + Code → `@code-generator`
+   - Automation + Refactor → `@refactor-engineer`
+   - Design + Architecture → `@architecture-planner`
+   - Compound tasks → `@build`
+
+3. **Context Handoff**:
+   - Prepare minimal context bundle
+   - Include detected intent, scope, constraints
+   - Route to target agent silently
+
+**Primary Tasks**:
+- Route user queries to correct specialized agent
+- Maintain silent operation (user sees only target agent)
+- Handle ambiguous queries via `@clarification-router`
+- Coordinate multi-agent workflows via `@build`
+
+**Chaining Patterns**:
+```
+User Query → @general → [specialized agent] → [results]
+User Query → @general → @build → [orchestrated workflow]
+User Query → @general → @clarification-router → [clarified intent] → @general
+```
+
+**Input/Output**:
+- **Input**: Natural language query
+- **Output**: Silent handoff to appropriate agent
+- **Best Use Cases**: Any complex development task, unclear requirements, multi-agent coordination
+
+**Usage Examples**:
+```bash
+# Simple routing
+"analyze auth flow" → @general → @security-specialist
+
+# Complex workflow
+"add rate limiting to API" → @general → @build (orchestrates multiple agents)
+
+# Ambiguous query
+"improve performance" → @general → @clarification-router
+```
+
+---
+
+### 2. @build - Elite Build Orchestrator
+**Role**: Multi-agent coordination and implementation execution with constitutional compliance
+
+**Core Workflows**:
+
+**Phase 1: Analysis & Planning**
+1. Discovery: `glob`/`list` for project structure
+2. Search: `grep` for patterns and dependencies  
+3. Examine: `read` specific files (line ranges for large)
+4. Validate: Check permissions, conflicts, safety
+5. Plan: Break down tasks, identify dependencies
+
+**Phase 2: Constitutional Validation**
+1. Read `/CONSTITUTION.md` for project standards
+2. Validate project structure against constitutional requirements
+3. Generate `constitutional_checks.yml` template
+4. Identify constitutional compliance gaps
+
+**Phase 3: SDD Artifact Processing**
+1. Discover `.specify/` directory structure
+2. Read `.specify/specs/[feature]/spec.md` files
+3. Parse functional specifications and acceptance criteria
+4. Validate SDD artifact completeness
+
+**Phase 4: Delegation & Coordination**
+1. **Architecture Planning** → `@plan`
+2. **Code Generation** → `@developer` or `@code-generator`
+3. **Quality Validation** → `@test-agent`
+4. **Security Review** → `@security-specialist`
+5. **Performance Check** → `@performance-specialist`
+
+**Phase 5: Integration & Quality Gates**
+1. Synthesize all subagent results
+2. Enforce quality gates (tests, linting, types, security)
+3. Generate constitutional compliance report
+4. Create comprehensive audit trail
+
+**Primary Tasks**:
+- Orchestrate multi-agent workflows
+- Coordinate complex feature implementation
+- Manage constitutional compliance validation
+- Handle SDD artifact processing
+- Execute quality gates and validation
+- Generate deployment artifacts
+
+**Chaining Patterns**:
+```
+@build → @plan → @developer → @test-agent → @security-specialist → @build (integration)
+@build → @performance-specialist → @developer → @test-agent → @build
+@build → @cicd-agent → @test-agent → @build (deployment pipeline)
+```
+
+**Key Capabilities**:
+- Multi-agent coordination with context preservation
+- Constitutional compliance validation
+- SDD artifact processing and validation
+- Enhanced quality gates with security checks
+- Session persistence and state management
+- Parallel subagent execution
+- MCP server integration
+
+**Input/Output**:
+- **Input**: Complex feature requests, multi-phase tasks
+- **Output**: Coordinated implementation with validation
+- **Success Metrics**: 85% debug reduction, >85% test coverage, 100% constitutional compliance
+
+**Best Use Cases**:
+- Complex feature implementation requiring multiple specialists
+- Projects requiring constitutional compliance
+- Multi-phase development workflows
+- Coordinated full-stack development
+- Production-critical implementations
+
+---
+
+### 3. @plan - SDD Planning & Analysis
+**Role**: Read-only architecture planning using Spec-Driven Development methodology
+
+**Core Workflows**:
+
+**Phase 1: Discovery & Analysis**
+1. **Codebase Research**:
+   - `glob`: Find relevant files and patterns
+   - `grep`: Search for existing implementations
+   - `read`: Examine current architecture and patterns
+2. **Requirements Analysis**:
+   - Parse user requirements and constraints
+   - Identify functional and non-functional requirements
+   - Map requirements to existing codebase patterns
+3. **Technical Research**:
+   - `webfetch`: Research best practices and standards
+   - Investigate technology options and trade-offs
+   - Analyze performance and security implications
+
+**Phase 2: SDD Specification Generation**
+1. **Executive Summary**: Goals, timeline, success criteria
+2. **Architecture & Design**: Current vs. proposed state, key decisions, data model
+3. **Implementation Plan**: Tasks broken down by phase, testing strategy
+4. **Risk Assessment**: Dependencies, blockers, mitigation strategies
+
+**Phase 3: MCP Task Integration**
+1. Auto-detect MCP task server availability
+2. Create structured tasks with dependencies
+3. Set priorities and effort estimates
+4. Generate task tracking workflow
+
+**Primary Tasks**:
+- Analyze existing codebase patterns and architecture
+- Create comprehensive SDD specifications
+- Generate implementation roadmaps and task breakdowns
+- Research technology options with trade-off analysis
+- Document architectural decisions with rationale
+- Plan backward compatibility and migration strategies
+
+**Chaining Patterns**:
+```
+User Request → @plan → [specification output] → @build (implementation)
+@plan → @spec (validation) → @plan (refinement) → @build
+@plan → @research (deep analysis) → @plan (updated specification)
+```
+
+**Key Capabilities**:
+- Read-only analysis (no accidental changes)
+- Spec-Kit template generation
+- MCP task server integration
+- Constitutional compliance validation
+- Decision matrix generation
+- Risk assessment and mitigation planning
+
+**Input/Output**:
+- **Input**: Feature requirements, architecture questions
+- **Output**: Comprehensive specifications, implementation plans
+- **Deliverables**: `SPECIFICATION.md`, `ROADMAP.md`, `DECISIONS.md`
+
+**Best Use Cases**:
+- Architecture planning and design decisions
+- Complex feature specification
+- Technology selection and evaluation
+- Migration planning and strategy
+- Requirements analysis and documentation
+
+---
+
+### 4. @developer - Unified Development Operations
+**Role**: Capability-based development for backend, frontend, and fullstack implementation
+
+**Core Capabilities**:
+
+**[CAPABILITY]: backend**
+**Workflow**:
+1. **API Design**: RESTful/GraphQL endpoint design and implementation
+2. **Database Integration**: Schema design, migrations, query optimization
+3. **Authentication**: Auth flow implementation, security best practices
+4. **Business Logic**: Server-side logic development and validation
+
+**Tasks**:
+- RESTful API design and implementation
+- Database schema design and migrations
+- Authentication and authorization implementation
+- Server-side business logic development
+- Backend testing and documentation
+
+**[CAPABILITY]: frontend**
+**Workflow**:
+1. **Component Development**: React/Vue component creation with TypeScript
+2. **State Management**: Data flow and state implementation
+3. **UI Implementation**: Responsive design and accessibility
+4. **Performance**: Bundle optimization and loading performance
+
+**Tasks**:
+- React/Vue component development
+- User interface design implementation
+- State management and data flow
+- Responsive design and accessibility
+- Frontend testing and optimization
+
+**[CAPABILITY]: fullstack**
+**Workflow**:
+1. **End-to-End Implementation**: Complete feature across stack
+2. **API Integration**: Frontend-backend connectivity
+3. **Database Integration**: Data persistence and retrieval
+4. **Authentication Flow**: Complete auth implementation
+
+**Tasks**:
+- End-to-end feature implementation
+- API integration and data flow
+- Database design and frontend integration
+- Authentication flow implementation
+- Performance optimization across stack
+
+**Chaining Patterns**:
+```
+@plan → @developer[capability=backend] → @test-agent → @build
+@plan → @developer[capability=frontend] → @performance-specialist → @build
+@plan → @developer[capability=fullstack] → @test-agent → @security-specialist → @build
+```
+
+**Quality Standards**:
+- TypeScript strict mode compliance
+- >85% test coverage requirement
+- Security best practices implementation
+- Performance benchmark compliance
+- WCAG 2.1 AA accessibility
+
+**Input/Output**:
+- **Input**: Capability specification + requirements
+- **Output**: Implemented code with tests and documentation
+- **Success Metrics**: Code quality, test coverage, performance benchmarks
+
+**Best Use Cases**:
+- Backend API development
+- Frontend component implementation
+- Full-stack feature development
+- Database integration and optimization
+- Authentication system implementation
+
+---
+
+## 🔍 SPECIALIZED ANALYSIS AGENTS
+
+### 5. @code-reviewer - Code Quality Assessment
+**Role**: Reviews code for best practices, potential issues, and maintainability
+
+**Core Workflows**:
+1. **Code Analysis**: Examine code structure, patterns, and quality
+2. **Issue Identification**: Find bugs, edge cases, and improvement opportunities
+3. **Standards Compliance**: Verify adherence to coding standards and best practices
+4. **Constructive Feedback**: Provide actionable, specific recommendations
+
+**Primary Tasks**:
+- Code quality and best practices review
+- Potential bugs and edge cases identification
+- Performance implications assessment
+- Security considerations review
+- Maintainability and readability evaluation
+- Test coverage and quality assessment
+- Documentation completeness review
+- Architectural consistency validation
+
+**Review Criteria**:
+- Code quality and best practices
+- Potential bugs and edge cases
+- Performance implications
+- Security considerations
+- Maintainability and readability
+- Test coverage and quality
+- Documentation completeness
+- Architectural consistency
+
+**Input/Output**:
+- **Input**: Code files, pull requests, specific components
+- **Output**: Detailed review with issues, recommendations, and priority levels
+- **Tracking**: Uses `todowrite` to track review items and follow-up tasks
+
+**Best Use Cases**:
+- Pre-merge code review
+- Quality assessment for existing codebase
+- Architecture validation
+- Security-focused code review
+- Performance code review
+
+---
+
+### 6. @security-specialist - Unified Security Operations
+**Role**: Comprehensive security operations through capability-based specialization
+
+**Core Capabilities**:
+
+**[CAPABILITY]: review**
+**Workflow**:
+1. **Static Code Analysis**: Security vulnerability scanning
+2. **OWASP Top 10**: Check for common web vulnerabilities
+3. **Authentication Review**: Validate auth implementation
+4. **Input Validation**: Assess data sanitization
+
+**Tasks**:
+- Static code analysis for security vulnerabilities
+- OWASP Top 10 vulnerability scanning
+- Authentication and authorization review
+- Input validation and sanitization assessment
+- Security configuration review
+
+**[CAPABILITY]: audit**
+**Workflow**:
+1. **Compliance Verification**: Security policy compliance checks
+2. **Data Protection**: Privacy compliance validation
+3. **Infrastructure Assessment**: Security configuration review
+4. **Third-party Evaluation**: External service security review
+
+**Tasks**:
+- Security policy compliance verification
+- Data protection and privacy compliance
+- Infrastructure security assessment
+- Third-party security evaluation
+- Security documentation review
+
+**[CAPABILITY]: assessment**
+**Workflow**:
+1. **Threat Modeling**: Identify potential attack vectors
+2. **Risk Analysis**: Assess security risks and impacts
+3. **Architecture Evaluation**: Security architecture review
+4. **Control Assessment**: Security control effectiveness evaluation
+
+**Tasks**:
+- Threat modeling and risk analysis
+- Security architecture evaluation
+- Attack surface analysis
+- Security control effectiveness assessment
+- Business impact analysis
+
+**[CAPABILITY]: monitoring**
+**Workflow**:
+1. **Event Monitoring**: Security event tracking and alerting
+2. **Vulnerability Tracking**: Ongoing vulnerability scanning
+3. **Metric Collection**: Security metric gathering and reporting
+4. **Incident Coordination**: Security incident response coordination
+
+**Tasks**:
+- Security event monitoring and alerting
+- Vulnerability scanning and tracking
+- Security metric collection and reporting
+- Incident response coordination
+- Security posture assessment
+
+**Security Standards**:
+- OWASP Top 10 compliance
+- Data protection (GDPR, CCPA)
+- Strong authentication implementation
+- Proper data encryption standards
+- Role-based access control validation
+
+**Input/Output**:
+- **Input**: Security scope, compliance requirements
+- **Output**: Vulnerability reports, risk assessments, compliance status
+- **Deliverables**: Security findings, remediation plans, monitoring setup
+
+**Best Use Cases**:
+- Security code reviews
+- Compliance audits
+- Vulnerability assessments
+- Security architecture reviews
+- Incident response planning
+
+---
+
+### 7. @performance-specialist - Unified Performance Operations
+**Role**: Comprehensive performance operations through capability-based specialization
+
+**Core Capabilities**:
+
+**[CAPABILITY]: analysis**
+**Workflow**:
+1. **Code Profiling**: Performance bottleneck identification
+2. **Database Analysis**: Query performance evaluation
+3. **API Assessment**: Response time and throughput analysis
+4. **Resource Analysis**: Memory, CPU, network usage evaluation
+
+**Tasks**:
+- Code profiling and performance metrics analysis
+- Database query performance evaluation
+- API response time and throughput analysis
+- Resource usage and memory leak detection
+- Bundle size and loading performance analysis
+
+**[CAPABILITY]: optimization**
+**Workflow**:
+1. **Code Optimization**: Performance improvements implementation
+2. **Database Tuning**: Index optimization and query refinement
+3. **Frontend Optimization**: Bundle optimization and code splitting
+4. **Caching Strategy**: Caching implementation and optimization
+
+**Tasks**:
+- Code optimization and refactoring recommendations
+- Database index optimization and query tuning
+- Frontend bundle optimization and code splitting
+- Caching strategy implementation
+- Algorithm efficiency improvements
+
+**[CAPABILITY]: monitoring**
+**Workflow**:
+1. **Real-time Tracking**: Performance metric monitoring
+2. **Regression Detection**: Performance regression identification
+3. **Alert Configuration**: Performance threshold management
+4. **Dashboard Creation**: Performance visualization setup
+
+**Tasks**:
+- Real-time performance metric tracking
+- Performance regression detection
+- Alert configuration and threshold management
+- Performance dashboard creation
+- Trend analysis and capacity planning
+
+**[CAPABILITY]: engineering**
+**Workflow**:
+1. **Scalability Design**: Load balancing and scaling strategies
+2. **Infrastructure Optimization**: Performance-focused infrastructure
+3. **CDN Implementation**: Content delivery optimization
+4. **Database Architecture**: Performance-oriented database design
+
+**Tasks**:
+- Scalability engineering and load balancing
+- Infrastructure optimization recommendations
+- CDN and asset optimization
+- Database sharding and replication strategies
+- Microservices performance optimization
+
+**Performance Standards**:
+- API endpoints <200ms (95th percentile)
+- Frontend bundles <500KB gzipped
+- Database queries <100ms for common operations
+- Memory usage <500MB for typical workloads
+- CPU usage <70% under normal load
+
+**Input/Output**:
+- **Input**: Performance issues, optimization targets
+- **Output**: Performance improvements, monitoring setup
+- **Deliverables**: Optimization reports, benchmarks, monitoring configuration
+
+**Best Use Cases**:
+- Performance bottleneck identification
+- Application optimization
+- Scalability planning
+- Performance monitoring setup
+- Database performance tuning
+
+---
+
+### 8. @test-agent - Testing & Quality Assurance
+**Role**: Comprehensive testing with git-aware strategies and structured result reporting
+
+**Core Workflows**:
+
+**Test Strategy Analysis**
+1. **Change Analysis**: Analyze code changes to determine optimal test strategy
+2. **Coverage Planning**: Generate test coverage reports with git diff integration
+3. **Regression Planning**: Identify regression testing requirements
+4. **Performance Testing**: Plan performance and security testing approaches
+
+**Test Execution**
+1. **Unit Testing**: Execute unit test suites with coverage analysis
+2. **Integration Testing**: Test API endpoints and component interactions
+3. **E2E Testing**: End-to-end workflow validation
+4. **Performance Testing**: Load testing and benchmarking
+5. **Security Testing**: Vulnerability scanning and penetration testing
+
+**Result Analysis**
+1. **Detailed Reporting**: Provide structured test results with failure analysis
+2. **Coverage Analysis**: Generate coverage reports with trend analysis
+3. **Performance Analysis**: Identify bottlenecks and optimization opportunities
+4. **Security Reporting**: Report security findings with risk assessment
+
+**Primary Tasks**:
+- Execute unit, integration, and e2e test suites
+- Generate performance benchmarks and load tests
+- Perform security vulnerability scanning
+- Validate code quality metrics and standards
+- Provide detailed test results with failure analysis
+- Generate coverage reports with trend analysis
+- Identify performance bottlenecks and optimization opportunities
+
+**Result Return Format**:
+```json
+{
+  "success": boolean,
+  "test_type": "unit|integration|e2e|performance|security",
+  "timestamp": "ISO-8601-timestamp",
+  "summary": {
+    "total_tests": number,
+    "passed": number,
+    "failed": number,
+    "skipped": number,
+    "coverage_percentage": number
+  },
+  "details": {
+    "test_results": [...],
+    "coverage_data": {...},
+    "performance_metrics": {...}
+  },
+  "recommendations": [...],
+  "warnings": [...],
+  "errors": [...]
+}
+```
+
+**Quality Standards**:
+- Minimum 90% coverage for new code
+- 80% coverage for existing code with improvement targets
+- 100% coverage for security-critical code
+- Unit tests: Complete in <30 seconds
+- Integration tests: Complete in <5 minutes
+- E2E tests: Complete in <15 minutes
+
+**Input/Output**:
+- **Input**: Test scope, coverage requirements, performance targets
+- **Output**: Structured test results with actionable recommendations
+- **Deliverables**: Test reports, coverage analysis, performance benchmarks
+
+**Best Use Cases**:
+- Comprehensive test suite execution
+- Coverage analysis and improvement
+- Performance testing and benchmarking
+- Security testing and vulnerability scanning
+- CI/CD test pipeline integration
+
+---
+
+## 📚 SUPPORTING SPECIALISTS
+
+### 9. @documentation-writer - Technical Documentation
+**Role**: Creates clear, comprehensive documentation for developers
+
+**Core Workflows**:
+1. **Requirements Analysis**: Understand documentation needs and audience
+2. **Structure Planning**: Organize documentation logically
+3. **Content Creation**: Write clear explanations with examples
+4. **Review & Update**: Maintain accuracy with code changes
+
+**Primary Tasks**:
+- API documentation generation
+- Setup and installation guides
+- Troubleshooting sections creation
+- Architecture overviews documentation
+- Code examples and usage patterns
+- User-friendly language and tone maintenance
+
+**Documentation Principles**:
+- Write for intended audience
+- Include practical examples
+- Keep documentation up-to-date with code changes
+- Use consistent formatting and style
+- Provide context and rationale
+- Include edge cases and limitations
+
+**Input/Output**:
+- **Input**: Documentation requirements, code to document
+- **Output**: Comprehensive documentation files
+- **Deliverables**: README files, API docs, guides
+
+**Best Use Cases**:
+- API documentation creation
+- README file generation
+- Setup guide development
+- Troubleshooting documentation
+- Architecture documentation
+
+---
+
+### 10. @research - Technical Research & Decision Support
+**Role**: Researches best practices and technical solutions for complex decisions
+
+**Core Workflows**:
+
+**Phase 1: Decision Extraction & Context Mapping**
+1. **Decision Clarification**: Identify specific architectural choice needed
+2. **Success Criteria**: Define measurable outcomes
+3. **Constraint Analysis**: Identify technical, business, and team constraints
+4. **Dependency Mapping**: Map related decisions and stakeholders
+
+**Phase 2: Intelligent Source Discovery & Qualification**
+1. **Official Documentation**: Framework/platform official docs, APIs
+2. **Peer-Reviewed Research**: Published benchmarks with methodology
+3. **Industry Consensus**: Architecture decision records, technology radar
+4. **Community Discussion**: High-quality community sources with validation
+
+**Phase 3: Evidence-Based Synthesis**
+1. **Comparative Analysis**: Structured comparison across decision criteria
+2. **Trade-off Analysis**: Performance, scalability, security, complexity
+3. **Real-world Evidence**: Production case studies and failure analysis
+4. **Contextualized Recommendation**: Scenario-specific recommendations
+
+**Primary Tasks**:
+- Architecture decision research and analysis
+- Technology option evaluation with trade-offs
+- Performance benchmarking research
+- Security implication analysis
+- Best practices documentation
+- Decision matrix generation
+
+**Research Framework**:
+- Source credibility evaluation
+- Evidence-based synthesis
+- Trade-off analysis
+- Context-specific recommendations
+- Implementation checkpoints
+- Success path planning
+
+**Input/Output**:
+- **Input**: Complex technical decisions, architecture choices
+- **Output**: Evidence-based recommendations with trade-offs
+- **Deliverables**: Research reports, decision matrices, implementation guidance
+
+**Best Use Cases**:
+- Technology selection decisions
+- Architecture pattern evaluation
+- Performance optimization research
+- Security approach analysis
+- Migration strategy research
+
+---
+
+### 11. @cicd-agent - Advanced CI/CD & PR Automation
+**Role**: Advanced CI/CD workflows with PR automation, auto-merge, and industry best practices
+
+**Core Workflows**:
+
+**PR Automation & Auto-Merge**
+1. **Smart Auto-Merge**: Merge when tests pass, no conflicts, required approvals
+2. **Conflict Detection**: Advanced conflict analysis with resolution suggestions
+3. **Approval Workflows**: Multi-level approval requirements based on change impact
+4. **Merge Strategies**: Squash, rebase, or merge commits based on policy
+
+**Worktree Management**
+1. **Isolated Worktrees**: Create isolated worktrees for parallel development
+2. **Worktree Cleanup**: Automatic cleanup and resource management
+3. **Branch Isolation**: Prevent cross-contamination between features
+4. **Performance Optimization**: Fast switching between contexts
+
+**Advanced CI/CD Features**
+1. **Parallel Testing**: Execute tests in parallel across multiple environments
+2. **Cache Optimization**: Intelligent caching strategies for build artifacts
+3. **Incremental Builds**: Build only what changed with dependency analysis
+4. **Deployment Strategies**: Blue-green, canary, and rolling deployments
+
+**Primary Tasks**:
+- PR automation and smart auto-merge
+- Worktree management for parallel development
+- Advanced caching strategies implementation
+- Parallel testing execution
+- Incremental build optimization
+- Deployment strategy implementation
+
+**Industry Best Practices**:
+- Smart conflict prediction and resolution
+- Lightweight worktree contexts
+- Multi-layer caching with intelligent invalidation
+- Change-based testing with parallel execution
+- Resource-aware parallelization
+- Fast feedback loops with incremental testing
+
+**Input/Output**:
+- **Input**: CI/CD requirements, deployment strategies
+- **Output**: Automated CI/CD pipelines with optimization
+- **Deliverables**: CI/CD configurations, deployment scripts
+
+**Best Use Cases**:
+- CI/CD pipeline setup and optimization
+- PR automation and auto-merge implementation
+- Worktree-based development environment
+- Parallel testing strategy implementation
+- Deployment automation
+
+---
+
+### 12. @agent-config - Elite Configuration Governance Authority
+**Role**: Critical governance backbone providing standards enforcement, compliance validation, and configuration management across all 47 agents
+
+**Core Workflows**:
+
+**Ecosystem Governance**
+1. **Complete Agent Inventory**: Comprehensive analysis of all 47 agent files
+2. **Standards Research**: Context7 integration for authoritative OpenCode standards validation
+3. **Compliance Validation**: YAML header validation, tool format verification, permission structure checks
+4. **Quality Assurance**: Systematic validation preventing ecosystem breakage
+
+**Configuration Standards Enforcement**
+1. **YAML Compliance**: Validates object-format tools, singular permissions, proper modes
+2. **Temperature Optimization**: Research-backed temperature settings for all agent types
+3. **Prohibited Fields Enforcement**: Exclusive knowledge of forbidden configuration elements
+4. **Safety Validation**: Manual edit only policy, git checkpoint strategy, comprehensive validation
+
+**Ecosystem Health Monitoring**
+1. **Real-time Compliance Tracking**: 87.2% current compliance rate monitoring
+2. **Critical Issue Identification**: 6 files requiring immediate fixes detection
+3. **Quality Metrics Dashboard**: Ecosystem health and standards evolution monitoring
+4. **Continuous Improvement Framework**: Standards evolution and proactive research
+
+**Primary Tasks**:
+- Govern all 47 agents with comprehensive configuration standards
+- Validate YAML compliance and enforce proper tool/permission formats
+- Optimize temperature settings based on agent type and research
+- Monitor ecosystem health with real-time compliance tracking
+- Provide definitive configuration rules and prohibited fields knowledge
+- Maintain safety constraints with manual edit only policy
+- Conduct systematic validation to prevent ecosystem breakage
+
+**Exclusive Capabilities**:
+- Complete 47-agent inventory and analysis
+- Official OpenCode standards research via Context7
+- Definitive configuration rules and compliance validation
+- Temperature optimization authority for all agent types
+- Ecosystem health monitoring and quality assurance
+- Safety-first approach with git checkpoint strategy
+
+**Configuration Standards**:
+- Required Fields: description, mode
+- Optional Fields: permission, tools, temperature, prompt, disable
+- Prohibited Fields: model, subtask, permissions (plural)
+- Tools Format: {"tool_name": true/false} (Arrays NOT allowed)
+- Permissions Format: Object with allow/deny/ask values
+- Mode Values: primary or subagent only
+
+**Temperature Optimization**:
+- Analysis/Review agents: 0.1-0.2
+- Planning agents: 0.1-0.3
+- Development agents: 0.3-0.5
+- Creative agents: 0.6-0.8
+- Documentation agents: 0.2-0.4
+- Testing agents: 0.1-0.3
+
+**Input/Output**:
+- **Input**: Configuration validation requests, compliance checks, standards inquiries
+- **Output**: Compliance reports, configuration corrections, standards documentation
+- **Deliverables**: Validated agent configurations, compliance certificates, ecosystem health reports
+
+**Best Use Cases**:
+- Agent configuration validation and correction
+- Ecosystem compliance monitoring and reporting
+- Standards enforcement across all agents
+- Configuration optimization and temperature tuning
+- Ecosystem health assessment and improvement
+
+---
+
+### 13. @constitutional-audit - Constitutional Compliance Audit
+**Role**: Performs comprehensive constitutional compliance audit and framework validation
+
+**Core Workflows**:
+
+**Privacy Compliance Checks**
+1. **Data Minimization**: Check for excessive data collection
+2. **Consent Management**: Verify consent mechanisms
+3. **Data Encryption**: Assess data protection implementation
+4. **User Rights**: Validate data subject rights implementation
+
+**Security Compliance Checks**
+1. **Authentication Validation**: MFA implementation verification
+2. **Encryption Standards**: TLS and encryption algorithm assessment
+3. **Access Controls**: Principle of least privilege validation
+4. **Audit Logging**: Comprehensive audit trail verification
+
+**Architectural Compliance Checks**
+1. **Separation of Concerns**: Proper layer separation validation
+2. **Modularity Standards**: Module boundary and dependency checks
+3. **Scalability Patterns**: Caching and load balancing readiness
+4. **Maintainability Metrics**: Code quality and architectural assessment
+
+**Audit Execution Framework**
+1. **Initialization**: Set up audit context and scope
+2. **Compliance Checks**: Run privacy, security, and architecture checks
+3. **Report Generation**: Create comprehensive audit reports
+4. **Continuous Monitoring**: Set up ongoing compliance monitoring
+
+**Primary Tasks**:
+- Privacy compliance auditing
+- Security standards validation
+- Architectural integrity assessment
+- Compliance scoring and reporting
+- Continuous compliance monitoring
+- CI/CD integration for compliance checks
+
+**Compliance Scoring**:
+- Privacy: 40% weight
+- Security: 40% weight  
+- Architecture: 20% weight
+- Overall score determines compliance level
+
+**Input/Output**:
+- **Input**: Compliance requirements, audit scope
+- **Output**: Comprehensive compliance reports with recommendations
+- **Deliverables**: Audit reports, compliance certificates, monitoring setup
+
+**Best Use Cases**:
+- Constitutional compliance validation
+- Privacy compliance auditing
+- Security standards verification
+- Architectural compliance assessment
+- Continuous compliance monitoring
+
+---
+
+## 🔄 LEGACY & CONSOLIDATED AGENTS
+
+### Consolidated Development Agents
+Several agents have been consolidated into capability-based specialists:
+
+**@frontend-developer** → **@developer[capability=frontend]**
+**@backend-developer** → **@developer[capability=backend]**
+**@security-agent** → **@security-specialist**
+**@performance-agent** → **@performance-specialist**
+
+These legacy files are maintained for backward compatibility but redirect to the consolidated agents.
+
+---
+
+## 🎛️ COMMAND INTEGRATION
+
+### Spec-Kit Commands
+- `/speckit.constitution` - Create/update project governing principles
+- `/speckit.specify` - Define requirements and user stories
+- `/speckit.plan` - Create technical implementation plans
+- `/speckit.tasks` - Generate actionable task lists
+- `/speckit.implement` - Execute implementation tasks
+- `/speckit.clarify` - Clarify underspecified areas
+- `/speckit.analyze` - Cross-artifact consistency analysis
+- `/speckit.checklist` - Generate quality checklists
+
+### Built-in Commands
+- `/init` - Initialize project with agents
+- `/undo` - Revert last action
+- `/redo` - Reapply reverted action
+- `/share` - Generate team-viewable link
+- `/help` - Display available commands and agents
+
+---
+
+## 🔗 AGENT CHAINING PATTERNS
+
+### Common Workflow Chains
+
+**1. Feature Implementation Workflow**
+```
+User Request → @general → @plan → @developer → @test-agent → @security-specialist → @agent-config → @build → @documentation-writer
+```
+
+**2. Security Review Workflow**
+```
+Code Changes → @general → @security-specialist → @constitutional-audit → @agent-config → @code-reviewer → @build
+```
+
+**3. Performance Optimization Workflow**
+```
+Performance Issue → @general → @performance-specialist → @developer → @test-agent → @agent-config → @build
+```
+
+**4. Architecture Planning Workflow**
+```
+Architecture Question → @general → @research → @plan → @constitutional-audit → @build
+```
+
+**5. CI/CD Setup Workflow**
+```
+CI/CD Need → @general → @cicd-agent → @test-agent → @security-specialist → @build
+```
+
+### Multi-Agent Coordination Patterns
+
+**Parallel Execution**
+```
+@build spawns:
+├─ @test-agent (parallel testing)
+├─ @documentation-writer (parallel docs)
+└─ @performance-specialist (parallel profiling)
+```
+
+**Sequential Validation**
+```
+@developer → @test-agent → @security-specialist → @performance-specialist → @build (integration)
+```
+
+**Iterative Improvement**
+```
+@code-reviewer → @developer → @test-agent → @code-reviewer (loop until quality gates pass)
+```
+
+---
+
+## 📊 SUCCESS METRICS & KPIs
+
+### Development Quality Metrics
+- **Code Quality**: TypeScript strict compliance, linting clean
+- **Test Coverage**: >85% for new code, >80% for existing
+- **Security**: 0 critical vulnerabilities, <5 medium
+- **Performance**: Meet established benchmarks
+- **Documentation**: Complete API documentation
+
+### Workflow Efficiency Metrics
+- **Agent Routing**: <2 seconds for correct routing
+- **Plan Generation**: <30 minutes for complex features
+- **Implementation**: 60-80% faster than manual
+- **Quality Gates**: <5 minutes for validation
+- **Error Reduction**: 85% fewer bugs in production
+
+### Collaboration Metrics
+- **Session Sharing**: Instant team collaboration via `/share`
+- **Context Preservation**: 95% context retention between agents
+- **Decision Documentation**: 100% architectural decisions documented
+- **Compliance**: 100% constitutional compliance validation
+
+---
+
+## 🎯 SELECTION GUIDE
+
+### Quick Decision Tree
+
+**1. What type of task?**
+- **Planning/Architecture** → @plan
+- **Implementation** → @developer
+- **Analysis/Review** → @code-reviewer, @security-specialist, @performance-specialist
+- **Testing** → @test-agent
+- **Coordination** → @build
+- **Research** → @research
+- **Documentation** → @documentation-writer
+- **CI/CD** → @cicd-agent
+
+**2. What's the scope?**
+- **Single file/feature** → Direct to specialist
+- **Multi-component** → @build for coordination
+- **Unclear** → @general for routing
+
+**3. What are the constraints?**
+- **Security-critical** → Include @security-specialist
+- **Performance-critical** → Include @performance-specialist
+- **Compliance-required** → Include @constitutional-audit
+- **Production-deployment** → Include @cicd-agent
+
+### Complex Scenario Examples
+
+**"Implement OAuth2 with high security requirements"**
+```
+@general → @plan (security focus) → @developer[backend] → @security-specialist → @test-agent → @constitutional-audit → @build
+```
+
+**"Optimize slow API response times"**
+```
+@general → @performance-specialist → @developer → @test-agent → @build
+```
+
+**"Set up CI/CD with automated testing"**
+```
+@general → @cicd-agent → @test-agent → @security-specialist → @build
+```
+
+**"Plan microservices migration"**
+```
+@general → @research → @plan → @constitutional-audit → @build
+```
+
+---
+
+## 🔧 TECHNICAL INTEGRATION
+
+### Tool Access Patterns
+- **Read-only agents** (@plan, @research): `read`, `grep`, `glob`, `list`, `webfetch`
+- **Implementation agents** (@developer, @build): Full tool access with permissions
+- **Review agents** (@code-reviewer, @security-specialist): Read access + analysis tools
+- **Testing agents** (@test-agent): Execution tools + validation
+
+### Permission Management
+- **Deny by default**: Security-sensitive operations require explicit permission
+- **Ask for destructive**: Write/edit operations require confirmation
+- **Allow for safe**: Read operations and analysis tools generally allowed
+
+### State Management
+- **todowrite/todoread**: Cross-agent state persistence
+- **Session continuation**: Resume complex workflows across sessions
+- **Context preservation**: Maintain context between agent handoffs
+
+---
+
+## 📈 USAGE EXAMPLES
+
+### Example 1: Complete Feature Implementation
+```bash
+# User request
+"Add user authentication with OAuth2 support"
+
+# Agent flow
+@general → @plan → @developer[backend] → @test-agent → @security-specialist → @documentation-writer → @build
+
+# Expected outcomes
+- Complete OAuth2 implementation
+- Comprehensive test coverage
+- Security validation
+- API documentation
+- Production-ready deployment
+```
+
+### Example 2: Performance Optimization
+```bash
+# User request
+"Database queries are slow, optimize performance"
+
+# Agent flow
+@general → @performance-specialist → @developer → @test-agent → @build
+
+# Expected outcomes
+- Performance analysis report
+- Query optimization implementation
+- Before/after benchmarks
+- Monitoring setup
+```
+
+### Example 3: Security Audit
+```bash
+# User request
+"Conduct security audit of payment processing"
+
+# Agent flow
+@general → @security-specialist → @constitutional-audit → @code-reviewer → @build
+
+# Expected outcomes
+- Vulnerability assessment report
+- Compliance validation
+- Remediation recommendations
+- Security monitoring setup
+```
+
+---
+
+## 🎓 BEST PRACTICES
+
+### For Users
+1. **Start with @general** for any complex or unclear request
+2. **Provide context** about constraints, requirements, and success criteria
+3. **Use @plan** for complex features before implementation
+4. **Include security and performance** considerations from the start
+5. **Leverage @build** for multi-phase workflows
+6. **Use `/share`** for team collaboration on complex tasks
+
+### For Development Teams
+1. **Establish constitutional standards** early with @constitutional-audit
+2. **Set up CI/CD** with @cicd-agent for consistent quality
+3. **Use @research** for major technology decisions
+4. **Document architectural decisions** with @plan
+5. **Implement comprehensive testing** with @test-agent
+6. **Regular security reviews** with @security-specialist
+
+### For Project Success
+1. **Clear requirements** before agent invocation
+2. **Appropriate agent selection** based on task type
+3. **Context preservation** across agent handoffs
+4. **Quality gate enforcement** at each phase
+5. **Continuous monitoring** with performance and security agents
+6. **Documentation maintenance** with @documentation-writer
+
+---
+
+## 🔍 TROUBLESHOOTING
+
+### Common Issues
+1. **Agent not responding**: Check if @general routing was needed
+2. **Incomplete results**: Verify all required context was provided
+3. **Quality issues**: Ensure @test-agent and @security-specialist were included
+4. **Performance problems**: Include @performance-specialist in workflow
+5. **Compliance failures**: Run @constitutional-audit before deployment
+
+### Resolution Strategies
+1. **Clarify requirements**: Use @clarification-router or provide more specific context
+2. **Break down tasks**: Use @plan for complex requirements
+3. **Add quality gates**: Include testing and security agents
+4. **Use coordination**: Leverage @build for multi-agent workflows
+5. **Monitor progress**: Use todowrite for task tracking
+
+---
+
+## 📝 CONCLUSION
+
+This agent directory provides a comprehensive guide to the OpenCode agent ecosystem. Key takeaways:
+
+1. **@general is the entry point** for routing complex requests
+2. **@build orchestrates multi-agent workflows** for complex tasks
+3. **Specialized agents handle specific domains** (security, performance, testing)
+4. **Capability-based agents** provide flexible development operations
+5. **Constitutional compliance** is integrated throughout the ecosystem
+6. **Chaining patterns** enable sophisticated workflows
+7. **Quality gates** ensure high standards across all operations
+
+Success comes from understanding each agent's strengths and using appropriate chaining patterns for complex scenarios. Always start with clear requirements and leverage the routing capabilities of @general for optimal agent selection.
+
+---
+
+*Last Updated: December 2025*
+*Agent Count: 44+ specialized agents*
+*Ecosystem Version: OpenCode v2.0 with Spec-Kit Integration*

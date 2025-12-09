@@ -1,6 +1,6 @@
 ---
-description: Analyze application performance
-agent: performance-optimizer
+description: Analyze application performance and identify optimization opportunities
+agent: performance-agent
 subtask: true
 ---
 

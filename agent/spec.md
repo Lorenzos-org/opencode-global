@@ -12,7 +12,7 @@ tools:
   todowrite: true
   todoread: true
   webfetch: true
-permissions:
+permission:
   bash: "ask"
   edit: "ask"
   write: "ask"

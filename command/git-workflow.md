@@ -1,6 +1,6 @@
 ---
 description: Manage Git operations, releases, and version control workflows for OpenCode projects
-agent: git-agent
+agent: git
 subtask: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Update project documentation
+description: Update project documentation and maintain comprehensive project docs
 agent: documentation-writer
 subtask: true
 ---

@@ -14,7 +14,7 @@ tools:
   todoread: true
   todowrite: true
   webfetch: true
-permissions:
+permission:
    read: allow
    write: allow
    edit: allow
@@ -220,7 +220,7 @@ template: |
   Output format: JSON with severity levels
 agent: @security-auditor
 subtask: true
-permissions:
+permission:
   bash: allow
   read: allow
 ***

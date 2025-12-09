@@ -1,5 +1,7 @@
 ---
 description: Generate a custom checklist for the current feature based on user requirements.
+agent: plan
+subtask: true
 ---
 
 ## Checklist Purpose: "Unit Tests for English"

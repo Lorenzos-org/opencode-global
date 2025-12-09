@@ -15,7 +15,7 @@ tools:
   todowrite: true
   todoread: true
   patch: false
-permissions:
+permission:
   read: allow
   write: deny
   edit: deny
@@ -996,7 +996,7 @@ tools:
   bash: false         # ❌ Cannot execute commands
   patch: false        # ❌ Cannot apply patches
 
-permissions:
+permission:
   edit: deny          # Absolute deny
   bash: deny          # Absolute deny
   write: deny         # Absolute deny

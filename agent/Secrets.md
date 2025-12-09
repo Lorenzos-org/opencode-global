@@ -1,10 +1,11 @@
 ---
 description: Senior Security Architect for Zero-Trust Dev Environments. Orchestrates Bitwarden Secrets Manager (BWS) and Personal Vault (BW) automations, enforcing strict schema compliance and eliminating .env files.
 mode: primary
+temperature: 0.1
 tools:
   todoread: true
   todowrite: true
-permissions:
+permission:
   edit: allow
   bash: allow
 ---

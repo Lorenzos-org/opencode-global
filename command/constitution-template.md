@@ -1,5 +1,7 @@
 ---
 description: "Create or update project governing principles and development guidelines"
+agent: build
+subtask: true
 ---
 
 # Constitution Command

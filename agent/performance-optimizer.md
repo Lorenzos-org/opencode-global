@@ -13,7 +13,7 @@ tools:
    write: true
    edit: true
    bash: true
-permissions:
+permission:
    bash: "ask"
    edit: "ask"
    write: "ask"

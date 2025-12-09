@@ -1,10 +1,10 @@
 ---
-description: Define requirements and user stories using Spec-Driven Development
+description: Define requirements and user stories using Spec-Driven Development methodology
 agent: plan
 subtask: true
 ---
 
-Create functional specifications using Spec-Driven Development methodology:
+Create functional specifications using Spec-Driven Development methodology for: $ARGUMENTS
 
 ## Specification Focus:
 - Define **what** to build (not **how**)

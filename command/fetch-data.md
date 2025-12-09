@@ -1,5 +1,7 @@
 ---
 description: Manages data fetching patterns, API integrations, and caching strategies
+agent: plan
+subtask: true
 ---
 
 # Fetch Data Command

@@ -1,0 +1,637 @@
+# Comprehensive Agent Registry & Relationship Analysis
+
+**Generated**: December 8, 2025  
+**Total Agents Analyzed**: 44+ specialized agents  
+**Ecosystem Version**: OpenCode v2.0 with Spec-Kit Integration
+
+---
+
+## 🎯 PRIMARY AGENTS
+
+### 1. @general - Silent Intent Router
+**Role**: Entry point router that analyzes user intent and delegates to appropriate specialized agents
+
+**Core Tasks**:
+- Silent intent classification (analysis|generation|automation|design|debugging|planning)
+- Tech domain detection (Python, TypeScript, React, APIs, security, etc.)
+- Scope assessment (single-file|multi-file|system-wide)
+- Agent routing with context handoff
+
+**Parameters**:
+- Temperature: 0.4 (balanced routing decisions)
+- Tools: grep, glob, read, list, patch, todowrite, todoread
+- Permissions: edit: allow, bash: allow
+- Mode: subagent
+
+**Relationship Patterns**:
+- Routes to specialized agents based on intent+domain matrix
+- Delegates compound tasks to @build
+- Escalates ambiguous queries to @clarification-router
+
+**Decision Criteria**:
+- Analysis + Code → @code-analyzer
+- Analysis + Security → @security-auditor  
+- Generation + Code → @code-generator
+- Automation + Refactor → @refactor-engineer
+- Compound tasks → @build
+
+---
+
+### 2. @build - Elite Build Orchestrator
+**Role**: Multi-agent coordination and implementation execution with constitutional compliance
+
+**Core Tasks**:
+- Multi-phase workflow orchestration (Analysis → Planning → Generation → Validation → Integration)
+- Constitutional compliance validation
+- SDD artifact processing and validation
+- Quality gate enforcement
+- Session persistence and state management
+
+**Parameters**:
+- Temperature: 0.4 (focused coordination)
+- Tools: Full access (read, write, edit, bash, grep, glob, list, todowrite, todoread, webfetch)
+- Permissions: Full access (allow for all)
+- Mode: primary
+
+**Relationship Patterns**:
+- Delegates to @plan for architecture design
+- Invokes @developer for implementation
+- Coordinates @test-agent for validation
+- Manages @security-specialist for security reviews
+- Synthesizes results from all subagents
+
+**Key Capabilities**:
+- Parallel subagent execution
+- MCP server integration
+- Enhanced quality gates (constitutional, SDD, security)
+- Context window management (~20K tokens for orchestration)
+
+---
+
+### 3. @plan - SDD Planning & Analysis
+**Role**: Read-only architecture planning using Spec-Driven Development methodology
+
+**Core Tasks**:
+- Codebase analysis and pattern identification
+- Requirements analysis and constraint mapping
+- SDD specification generation
+- MCP task server integration
+- Technology research and trade-off analysis
+
+**Parameters**:
+- Temperature: 0.15 (highly deterministic analysis)
+- Tools: read-only (read, grep, glob, list, webfetch, task, todowrite, todoread)
+- Permissions: read: allow, write: deny, edit: deny, bash: deny
+- Mode: primary
+
+**Relationship Patterns**:
+- Receives requirements from @build or direct user input
+- Provides specifications to @build for implementation
+- Collaborates with @spec for SDD template validation
+- Research integration with Copilot-CLI patterns
+
+---
+
+### 4. @developer - Unified Development Operations
+**Role**: Capability-based development for backend, frontend, and fullstack implementation
+
+**Core Tasks**:
+- Backend: API design, database integration, authentication
+- Frontend: Component development, state management, UI implementation
+- Fullstack: End-to-end feature implementation
+
+**Parameters**:
+- Temperature: 0.2 (precise implementation)
+- Tools: Full development access
+- Permissions: Full access for implementation
+- Mode: subagent
+
+**Capability-Based Specialization**:
+- `[CAPABILITY]: backend` - Server-side development
+- `[CAPABILITY]: frontend` - Client-side development  
+- `[CAPABILITY]: fullstack` - Complete feature implementation
+
+---
+
+## 🔍 SPECIALIZED ANALYSIS AGENTS
+
+### 5. @code-reviewer - Code Quality Assessment
+**Role**: Reviews code for best practices, potential issues, and maintainability
+
+**Core Tasks**:
+- Code quality and best practices review
+- Potential bugs and edge cases identification
+- Performance implications assessment
+- Security considerations review
+- Test coverage and quality assessment
+
+**Parameters**:
+- Temperature: 0.3 (balanced analysis)
+- Tools: read, write, edit, bash, grep, glob, todowrite, todoread
+- Permissions: Full access for review
+- Mode: subagent
+
+---
+
+### 6. @security-specialist - Unified Security Operations
+**Role**: Comprehensive security operations through capability-based specialization
+
+**Core Tasks**:
+- `[CAPABILITY]: review` - Static code analysis, OWASP Top 10, authentication review
+- `[CAPABILITY]: audit` - Compliance verification, data protection, infrastructure assessment
+- `[CAPABILITY]: assessment` - Threat modeling, risk analysis, security architecture evaluation
+- `[CAPABILITY]: monitoring` - Event monitoring, vulnerability tracking, incident coordination
+
+**Parameters**:
+- Temperature: 0.2 (security-focused precision)
+- Tools: Full security analysis access
+- Permissions: Full access for security operations
+- Mode: subagent
+
+---
+
+### 7. @performance-specialist - Unified Performance Operations
+**Role**: Comprehensive performance operations through capability-based specialization
+
+**Core Tasks**:
+- `[CAPABILITY]: analysis` - Code profiling, database analysis, API assessment
+- `[CAPABILITY]: optimization` - Code optimization, database tuning, frontend optimization
+- `[CAPABILITY]: monitoring` - Real-time tracking, regression detection, alert configuration
+- `[CAPABILITY]: engineering` - Scalability design, infrastructure optimization, CDN implementation
+
+**Parameters**:
+- Temperature: 0.3 (performance-focused analysis)
+- Tools: Full performance analysis access
+- Permissions: Full access for performance operations
+- Mode: subagent
+
+---
+
+### 8. @test-agent - Testing & Quality Assurance
+**Role**: Comprehensive testing with git-aware strategies and structured result reporting
+
+**Core Tasks**:
+- Test strategy analysis (change-based testing, coverage planning)
+- Test execution (unit, integration, e2e, performance, security)
+- Result analysis (detailed reporting, coverage analysis, performance analysis)
+
+**Parameters**:
+- Temperature: 0.3 (testing-focused precision)
+- Tools: Full testing execution access
+- Permissions: Full access for testing operations
+- Mode: subagent
+
+**Result Return Format**: Structured JSON with success status, test type, summary, details, recommendations, warnings, and errors.
+
+---
+
+## 📚 SUPPORTING SPECIALISTS
+
+### 9. @documentation-writer - Technical Documentation
+**Role**: Creates clear, comprehensive documentation for developers
+
+**Core Tasks**:
+- API documentation generation
+- Setup and installation guides
+- Troubleshooting sections creation
+- Architecture overviews documentation
+- Code examples and usage patterns
+
+**Parameters**:
+- Temperature: 0.3 (clear, consistent documentation)
+- Tools: write, edit, grep, glob, read, list, patch, todowrite, todoread, webfetch
+- Permissions: edit: ask, bash: deny (safe documentation)
+- Mode: subagent
+
+---
+
+### 10. @research - Technical Research & Decision Support
+**Role**: Researches best practices and technical solutions for complex decisions
+
+**Core Tasks**:
+- Architecture decision research and analysis
+- Technology option evaluation with trade-offs
+- Performance benchmarking research
+- Security implication analysis
+- Best practices documentation
+
+**Parameters**:
+- Temperature: 0.2 (research-focused accuracy)
+- Tools: read, grep, glob, list, webfetch, todowrite, todoread
+- Permissions: read: allow, write: deny, edit: deny, bash: deny
+- Mode: subagent
+
+---
+
+### 11. @cicd-agent - Advanced CI/CD & PR Automation
+**Role**: Advanced CI/CD workflows with PR automation, auto-merge, and industry best practices
+
+**Core Tasks**:
+- PR automation and smart auto-merge
+- Worktree management for parallel development
+- Advanced caching strategies implementation
+- Parallel testing execution
+- Deployment strategy implementation
+
+**Parameters**:
+- Temperature: 0.4 (automation-focused coordination)
+- Tools: Full CI/CD implementation access
+- Permissions: Full access for CI/CD operations
+- Mode: subagent
+
+---
+
+### 12. @agent-config - Elite Configuration Governance Authority
+**Role**: Critical governance backbone providing standards enforcement, compliance validation, and configuration management across all 47 agents
+
+**Core Tasks**:
+- Complete agent inventory and analysis
+- YAML compliance validation and enforcement
+- Temperature optimization based on agent type
+- Ecosystem health monitoring and quality assurance
+- Safety constraints with manual edit only policy
+
+**Parameters**:
+- Temperature: 0.1 (highly deterministic configuration)
+- Tools: read, grep, list, write, edit, todoread, todowrite, mgrep
+- Permissions: bash: ask, write: allow, edit: allow
+- Mode: subagent
+
+---
+
+### 13. @constitutional-audit - Constitutional Compliance Audit
+**Role**: Performs comprehensive constitutional compliance audit and framework validation
+
+**Core Tasks**:
+- Privacy compliance auditing
+- Security standards validation
+- Architectural integrity assessment
+- Compliance scoring and reporting
+- Continuous compliance monitoring
+
+**Parameters**:
+- Temperature: 0.2 (compliance-focused accuracy)
+- Tools: Full compliance analysis access
+- Permissions: Full access for compliance operations
+- Mode: subagent
+
+---
+
+## 🔄 LEGACY & CONSOLIDATED AGENTS
+
+Several agents have been consolidated into capability-based specialists:
+
+- **@frontend-developer** → **@developer[capability=frontend]**
+- **@backend-developer** → **@developer[capability=backend]**
+- **@security-agent** → **@security-specialist**
+- **@performance-agent** → **@performance-specialist**
+
+These legacy files are maintained for backward compatibility but redirect to the consolidated agents.
+
+---
+
+## 🔗 AGENT CHAINING PATTERNS
+
+### Common Workflow Chains
+
+#### 1. Feature Implementation Workflow
+```
+User Request → @general → @plan → @developer → @test-agent → @security-specialist → @agent-config → @build → @documentation-writer
+```
+
+#### 2. Security Review Workflow
+```
+Code Changes → @general → @security-specialist → @constitutional-audit → @agent-config → @code-reviewer → @build
+```
+
+#### 3. Performance Optimization Workflow
+```
+Performance Issue → @general → @performance-specialist → @developer → @test-agent → @build
+```
+
+#### 4. Architecture Planning Workflow
+```
+Architecture Question → @general → @research → @plan → @constitutional-audit → @build
+```
+
+#### 5. CI/CD Setup Workflow
+```
+CI/CD Need → @general → @cicd-agent → @test-agent → @security-specialist → @build
+```
+
+### Multi-Agent Coordination Patterns
+
+#### Parallel Execution
+```
+@build spawns:
+├─ @test-agent (parallel testing)
+├─ @documentation-writer (parallel docs)
+└─ @performance-specialist (parallel profiling)
+```
+
+#### Sequential Validation
+```
+@developer → @test-agent → @security-specialist → @performance-specialist → @build (integration)
+```
+
+#### Iterative Improvement
+```
+@code-reviewer → @developer → @test-agent → @code-reviewer (loop until quality gates pass)
+```
+
+---
+
+## 📊 TASK-BASED RELATIONSHIP MATRIX
+
+| Task Type | Primary Agent | Secondary Agents | Parameters Passed | Success Criteria |
+|-----------|----------------|------------------|-------------------|------------------|
+| **Feature Development** | @build | @plan, @developer, @test-agent, @security-specialist | Requirements, constraints, quality gates | Working feature with >85% test coverage |
+| **Security Audit** | @security-specialist | @constitutional-audit, @code-reviewer | Security scope, compliance requirements | Vulnerability report, compliance status |
+| **Performance Optimization** | @performance-specialist | @developer, @test-agent | Performance targets, baseline metrics | Performance improvements, monitoring setup |
+| **Architecture Planning** | @plan | @research, @constitutional-audit | Requirements, constraints, tech stack | Complete specification, implementation plan |
+| **CI/CD Setup** | @cicd-agent | @test-agent, @security-specialist | Deployment strategy, quality gates | Automated pipeline, deployment ready |
+| **Code Review** | @code-reviewer | @security-specialist, @performance-specialist | Code files, review criteria | Review report, improvement recommendations |
+| **Documentation** | @documentation-writer | @plan, @developer | Code to document, audience | Complete documentation, examples |
+| **Configuration Management** | @agent-config | All agents | Configuration requirements, standards | Validated configurations, compliance report |
+
+---
+
+## 🔄 PARAMETER PASSING & INTEGRATION PATTERNS
+
+### Context Preservation Strategies
+
+#### 1. Minimal Context Bundle
+```json
+{
+  "query": "exact user text",
+  "intent": "classification: analysis|generation|automation|design|debugging|planning",
+  "tech_stack": ["detected languages/frameworks"],
+  "scope": "files/modules affected",
+  "constraints": ["non-destructive", "production-critical"],
+  "confidence": "HIGH|MEDIUM|LOW"
+}
+```
+
+#### 2. State Management via TodoWrite
+```
+📊 Build Session State Log
+Session: [timestamp] | Project: [name] | Model: [model]
+
+├─ 🎯 Initial Intent
+├─ 🔍 Analysis Phase  
+├─ 📋 Planning Phase
+├─ 🏛️ Constitutional Validation Phase
+├─ 📋 SDD Artifact Processing Phase
+├─ 💻 Generation Phase
+├─ ✅ Validation Phase
+├─ 🛡️ Enhanced Quality Gates Phase
+├─ 🚀 Integration Phase
+└─ 📈 Final Status
+```
+
+#### 3. JSON State Files for Workflows
+```json
+{
+  "workflow_id": "uuid",
+  "workflow_type": "feature-development|bug-fix|audit|optimization",
+  "goal": "One sentence goal",
+  "created_at": "ISO timestamp",
+  "updated_at": "ISO timestamp",
+  "current_step": 3,
+  "total_steps": 5,
+  "status": "in_progress|completed|blocked|failed",
+  "steps": [...],
+  "blockers": [],
+  "final_deliverables": {}
+}
+```
+
+### Handoff Mechanisms
+
+#### 1. Silent Handoff (General Agent)
+```
+@[agent-name]
+Intent: [detected]
+Query: [exact user query]
+Context: [minimal context bundle]
+```
+
+#### 2. Orchestrator Invocation (Complex Tasks)
+```
+@build
+Intent Chain: [intent1 → intent2 → ...]
+Suggested Subagents: [@agent1 → @agent2 → ...]
+User Query: [exact]
+Success Criteria: [what defines completion]
+```
+
+#### 3. Capability-Based Invocation
+```
+@developer
+Task: Implement OAuth2 support
+Capability: backend
+Requirements:
+  - Follow existing patterns
+  - TypeScript strict mode compliance
+  - Error handling for auth failures
+  - Non-destructive (preserve existing auth)
+  - Security: Input validation, sanitization
+```
+
+### Quality Gate Dependencies
+
+#### Constitutional Compliance Gates
+```
+Constitutional Validation Process:
+├─ Read: /CONSTITUTION.md for project standards
+├─ Validate: All code changes against constitutional requirements
+├─ Generate: constitutional_checks.yml with compliance status
+├─ Audit: Create audit trail for constitutional compliance
+├─ Integrate: Constitutional validation into quality gates
+└─ Report: Compliance status in final build report
+```
+
+#### SDD Artifact Validation
+```
+SDD Artifact Processing:
+├─ Discover: .specify/ directory structure
+├─ Read: .specify/specs/[feature]/spec.md files
+├─ Parse: Functional specifications and acceptance criteria
+├─ Process: .specify/implementation.md for technical specs
+├─ Validate: Code generation against SDD artifacts
+├─ Integrate: SDD validation into quality gates
+└─ Report: SDD compliance status
+```
+
+#### Enhanced Quality Gates
+```
+Quality Gate Validation Process:
+├─ Constitutional Compliance Check
+├─ SDD Artifact Validation
+├─ Copilot-CLI Security Guidelines Validation
+├─ Audit Trail Completeness Verification
+├─ Enhanced Quality Gate Reporting
+├─ Address any failed quality gates
+└─ Obtain quality gate approvals
+```
+
+---
+
+## 🎯 DECISION CRITERIA & USAGE PATTERNS
+
+### Quick Decision Tree
+
+#### 1. What type of task?
+- **Planning/Architecture** → @plan
+- **Implementation** → @developer
+- **Analysis/Review** → @code-reviewer, @security-specialist, @performance-specialist
+- **Testing** → @test-agent
+- **Coordination** → @build
+- **Research** → @research
+- **Documentation** → @documentation-writer
+- **CI/CD** → @cicd-agent
+
+#### 2. What's the scope?
+- **Single file/feature** → Direct to specialist
+- **Multi-component** → @build for coordination
+- **Unclear** → @general for routing
+
+#### 3. What are the constraints?
+- **Security-critical** → Include @security-specialist
+- **Performance-critical** → Include @performance-specialist
+- **Compliance-required** → Include @constitutional-audit
+- **Production-deployment** → Include @cicd-agent
+
+### Complex Scenario Examples
+
+#### "Implement OAuth2 with high security requirements"
+```
+@general → @plan (security focus) → @developer[backend] → @security-specialist → @test-agent → @constitutional-audit → @build
+```
+
+#### "Optimize slow API response times"
+```
+@general → @performance-specialist → @developer → @test-agent → @build
+```
+
+#### "Set up CI/CD with automated testing"
+```
+@general → @cicd-agent → @test-agent → @security-specialist → @build
+```
+
+#### "Plan microservices migration"
+```
+@general → @research → @plan → @constitutional-audit → @build
+```
+
+---
+
+## 📈 SUCCESS METRICS & KPIs
+
+### Development Quality Metrics
+- **Code Quality**: TypeScript strict compliance, linting clean
+- **Test Coverage**: >85% for new code, >80% for existing
+- **Security**: 0 critical vulnerabilities, <5 medium
+- **Performance**: Meet established benchmarks
+- **Documentation**: Complete API documentation
+
+### Workflow Efficiency Metrics
+- **Agent Routing**: <2 seconds for correct routing
+- **Plan Generation**: <30 minutes for complex features
+- **Implementation**: 60-80% faster than manual
+- **Quality Gates**: <5 minutes for validation
+- **Error Reduction**: 85% fewer bugs in production
+
+### Collaboration Metrics
+- **Session Sharing**: Instant team collaboration via `/share`
+- **Context Preservation**: 95% context retention between agents
+- **Decision Documentation**: 100% architectural decisions documented
+- **Compliance**: 100% constitutional compliance validation
+
+---
+
+## 🔧 TECHNICAL INTEGRATION
+
+### Tool Access Patterns
+- **Read-only agents** (@plan, @research): `read`, `grep`, `glob`, `list`, `webfetch`
+- **Implementation agents** (@developer, @build): Full tool access with permissions
+- **Review agents** (@code-reviewer, @security-specialist): Read access + analysis tools
+- **Testing agents** (@test-agent): Execution tools + validation
+
+### Permission Management
+- **Deny by default**: Security-sensitive operations require explicit permission
+- **Ask for destructive**: Write/edit operations require confirmation
+- **Allow for safe**: Read operations and analysis tools generally allowed
+
+### State Management
+- **todowrite/todoread**: Cross-agent state persistence
+- **Session continuation**: Resume complex workflows across sessions
+- **Context preservation**: Maintain context between agent handoffs
+
+---
+
+## 🎓 BEST PRACTICES
+
+### For Users
+1. **Start with @general** for any complex or unclear request
+2. **Provide context** about constraints, requirements, and success criteria
+3. **Use @plan** for complex features before implementation
+4. **Include security and performance** considerations from the start
+5. **Leverage @build** for multi-phase workflows
+6. **Use `/share`** for team collaboration on complex tasks
+
+### For Development Teams
+1. **Establish constitutional standards** early with @constitutional-audit
+2. **Set up CI/CD** with @cicd-agent for consistent quality
+3. **Use @research** for major technology decisions
+4. **Document architectural decisions** with @plan
+5. **Implement comprehensive testing** with @test-agent
+6. **Regular security reviews** with @security-specialist
+
+### For Project Success
+1. **Clear requirements** before agent invocation
+2. **Appropriate agent selection** based on task type
+3. **Context preservation** across agent handoffs
+4. **Quality gate enforcement** at each phase
+5. **Continuous monitoring** with performance and security agents
+6. **Documentation maintenance** with @documentation-writer
+
+---
+
+## 🔍 TROUBLESHOOTING
+
+### Common Issues
+1. **Agent not responding**: Check if @general routing was needed
+2. **Incomplete results**: Verify all required context was provided
+3. **Quality issues**: Ensure @test-agent and @security-specialist were included
+4. **Performance problems**: Include @performance-specialist in workflow
+5. **Compliance failures**: Run @constitutional-audit before deployment
+
+### Resolution Strategies
+1. **Clarify requirements**: Use @clarification-router or provide more specific context
+2. **Break down tasks**: Use @plan for complex requirements
+3. **Add quality gates**: Include testing and security agents
+4. **Use coordination**: Leverage @build for multi-agent workflows
+5. **Monitor progress**: Use todowrite for task tracking
+
+---
+
+## 📝 CONCLUSION
+
+This comprehensive agent registry provides a complete guide to the OpenCode agent ecosystem. Key takeaways:
+
+1. **@general is the entry point** for routing complex requests
+2. **@build orchestrates multi-agent workflows** for complex tasks
+3. **Specialized agents handle specific domains** (security, performance, testing)
+4. **Capability-based agents** provide flexible development operations
+5. **Constitutional compliance** is integrated throughout the ecosystem
+6. **Chaining patterns** enable sophisticated workflows
+7. **Quality gates** ensure high standards across all operations
+
+Success comes from understanding each agent's strengths and using appropriate chaining patterns for complex scenarios. Always start with clear requirements and leverage the routing capabilities of @general for optimal agent selection.
+
+---
+
+*Last Updated: December 2025*
+*Agent Count: 44+ specialized agents*
+*Ecosystem Version: OpenCode v2.0 with Spec-Kit Integration*

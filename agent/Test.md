@@ -15,7 +15,7 @@ tools:
   todowrite: true
   todoread: true
   task: true
-permissions:
+permission:
   read: allow
   write: allow
   edit: allow

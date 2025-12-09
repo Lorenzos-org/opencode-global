@@ -1,6 +1,7 @@
 ---
 description: Advanced developer experience optimization with workflow automation, tooling integration, and productivity enhancement
 mode: subagent
+temperature: 0.3
 tools:
   read: true
   write: true
@@ -8,7 +9,7 @@ tools:
   bash: true
   grep: true
   glob: true
-permissions:
+permission:
   read: allow
   write: allow
   edit: allow

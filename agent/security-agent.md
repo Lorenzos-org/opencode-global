@@ -2,19 +2,19 @@
 description: Advanced security automation with vulnerability scanning, compliance monitoring, and threat detection - now consolidated with security-auditor.md
 mode: subagent
 tools:
-   read: true
-   write: true
-   edit: true
-   bash: true
-   grep: true
-   glob: true
-   todowrite: true
-   todoread: true
-permissions:
-   read: allow
-   write: allow
-   edit: allow
-   bash: allow
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+  todowrite: true
+  todoread: true
+permission:
+  read: allow
+  write: allow
+  edit: allow
+  bash: allow
 ---
 
 # 🔒 @security-agent - Legacy Reference

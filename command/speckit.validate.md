@@ -1,11 +1,8 @@
+---
 description: Validate SDD artifact compliance and constitutional standards alignment
-mode: command
-agent: @spec
-tools: read, write, bash
-permissions:
-  read: allow
-  write: ask
-  bash: ask
+agent: build
+subtask: true
+---
 
 # Spec-Kit Validate Command
 

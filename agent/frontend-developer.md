@@ -3,20 +3,20 @@ description: Frontend development specialist for React/TypeScript projects - now
 mode: subagent
 temperature: 0.2
 tools:
-   grep: true
-   glob: true
-   read: true
-   list: true
-   patch: true
-   todowrite: true
-   todoread: true
-   write: true
-   edit: true
-   bash: true
-permissions:
-   bash: "ask"
-   edit: "allow"
-   write: "allow"
+  grep: true
+  glob: true
+  read: true
+  list: true
+  patch: true
+  todowrite: true
+  todoread: true
+  write: true
+  edit: true
+  bash: true
+permission:
+  bash: "ask"
+  edit: "allow"
+  write: "allow"
 ---
 
 # 🎨 @frontend-developer - Legacy Reference

@@ -1,11 +1,8 @@
+---
 description: Perform comprehensive constitutional compliance audit with SDD artifact validation and quality gates verification
-mode: command
-agent: @spec
-tools: read, write, bash
-permissions:
-  read: allow
-  write: ask
-  bash: ask
+agent: build
+subtask: true
+---
 
 # Spec-Kit Audit Command
 

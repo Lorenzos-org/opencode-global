@@ -1,6 +1,6 @@
 ---
 description: Execute comprehensive git workflow operations with agent coordination and result reporting
-agent: git-agent
+agent: git
 subtask: true
 ---
 

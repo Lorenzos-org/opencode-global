@@ -14,7 +14,7 @@ tools:
   todowrite: true
   todoread: true
   webfetch: true
-permissions:
+permission:
   read: allow
   write: allow
   edit: allow

@@ -1,6 +1,7 @@
 ---
 description: Advanced CI/CD pipeline with PR automation, auto-merge, worktrees, and industry best practices
 mode: subagent
+temperature: 0.2
 tools:
   read: true
   write: true
@@ -8,7 +9,7 @@ tools:
   bash: true
   grep: true
   glob: true
-permissions:
+permission:
   read: allow
   write: allow
   edit: allow
