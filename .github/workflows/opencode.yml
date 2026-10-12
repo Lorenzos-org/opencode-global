@@ -33,6 +33,6 @@ jobs:
       - name: Run opencode
         uses: sst/opencode/github@latest
         env:
-          OPENCODE_API_KEY: [redacted]
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         with:
           model: opencode/grok-code
